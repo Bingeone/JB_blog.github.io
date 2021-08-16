@@ -1,0 +1,46 @@
+/* ---------------------------------
+ *      自定义修饰样式
+ * --------------------------------- */
+body,
+.widget,
+.footer,
+.navbar-main,
+.card,
+.hljs,
+.aplayer {
+  background-color: rgba(255,255,255,0.812);
+}
+.navbar-main .navbar-menu .navbar-item:hover,
+.navbar-main .navbar-menu .navbar-item.is-active {
+  color: $blue;
+  background-color: rgba(251,114,153,0.302);
+}
+/* 文章图片居中 */
+.article .content a img {
+  margin: auto;
+  display: block;
+}
+/* sharejs图标位置居中 */
+.social-share {
+  text-align: center;
+}
+/* 目录滚动 */
+.toc-scroll {
+  max-height: 500px;
+  overflow: auto;
+}
+/* 头像翻转 */
+.level img {
+  border-radius: 100px;
+  transition: all 0.5s ease-in;
+  -webkit-transition: all 0.5s ease-in;
+  -moz-transition: all 0.5s ease-in;
+  -o-transition: all 0.5s ease-in;
+}
+.level figure img:hover {
+  transform: rotate(360deg);
+  -webkit-transform: rotate(360deg);
+  -moz-transform: rotate(360deg);
+  -o-transform: rotate(360deg);
+  -ms-transform: rotate(360deg);
+}

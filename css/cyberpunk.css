@@ -11941,6 +11941,12 @@ body.night .gt-container .gt-header-textarea {
 body.night textarea {
   color: #fff;
 }
+body.night .gt-container .gt-comment-body {
+  color: #fff;
+}
+body.night .gt-container .gt-comment-admin .gt-comment-content {
+  background-color: #373d48;
+}
 body.night body,
 body.night strong,
 body.night time,
@@ -12296,6 +12302,12 @@ body.night .twikoo code {
   }
   body:not(.light) textarea {
     color: #fff;
+  }
+  body:not(.light) .gt-container .gt-comment-body {
+    color: #fff;
+  }
+  body:not(.light) .gt-container .gt-comment-admin .gt-comment-content {
+    background-color: #373d48;
   }
   body:not(.light) body,
   body:not(.light) strong,

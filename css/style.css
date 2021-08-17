@@ -11941,7 +11941,7 @@ body.night textarea {
   color: #fff;
 }
 body.night .gt-container .gt-comment-body {
-  color: #fff;
+  color: #a354b9 !important;
 }
 body.night .gt-container .gt-comment-admin {
   background-color: #373d48;
@@ -12303,7 +12303,7 @@ body.night .twikoo code {
     color: #fff;
   }
   body:not(.light) .gt-container .gt-comment-body {
-    color: #fff;
+    color: #a354b9 !important;
   }
   body:not(.light) .gt-container .gt-comment-admin {
     background-color: #373d48;

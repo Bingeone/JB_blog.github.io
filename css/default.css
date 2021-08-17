@@ -11942,9 +11942,10 @@ body.night textarea {
 }
 body.night .gt-container .gt-comment-body {
   color: #a354b9 !important;
+  background-color: #373d48;
 }
 body.night .gt-container .gt-comment-admin {
-  background-color: #373d48;
+  background-color: #1d2132;
 }
 body.night body,
 body.night strong,
@@ -12304,9 +12305,10 @@ body.night .twikoo code {
   }
   body:not(.light) .gt-container .gt-comment-body {
     color: #a354b9 !important;
+    background-color: #373d48;
   }
   body:not(.light) .gt-container .gt-comment-admin {
-    background-color: #373d48;
+    background-color: #1d2132;
   }
   body:not(.light) body,
   body:not(.light) strong,

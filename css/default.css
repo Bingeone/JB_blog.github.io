@@ -11943,7 +11943,7 @@ body.night textarea {
 body.night .gt-container .gt-comment-body {
   color: #fff;
 }
-body.night .gt-container .gt-comment-admin .gt-comment-content {
+body.night .gt-container .gt-comment-admin {
   background-color: #373d48;
 }
 body.night body,
@@ -12305,7 +12305,7 @@ body.night .twikoo code {
   body:not(.light) .gt-container .gt-comment-body {
     color: #fff;
   }
-  body:not(.light) .gt-container .gt-comment-admin .gt-comment-content {
+  body:not(.light) .gt-container .gt-comment-admin {
     background-color: #373d48;
   }
   body:not(.light) body,

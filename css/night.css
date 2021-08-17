@@ -7,6 +7,7 @@
 }
 body.night {
   background: #0e1225;
+/* gitalk 样式优化 */
 }
 body.night .hljs {
   display: block;
@@ -233,7 +234,7 @@ body.night .gt-container .gt-comment-body {
   color: #a354b9 !important;
   background-color: #373d48;
 }
-body.night .gt-container .gt-comment-admin {
+body.night .gt-container .gt-comment-admin .gt-comment-content {
   background-color: #1d2132;
 }
 body.night body,
@@ -370,6 +371,7 @@ body.night .twikoo code {
 @media (prefers-color-scheme: dark) {
   body:not(.light) {
     background: #0e1225;
+/* gitalk 样式优化 */
   }
   body:not(.light) .hljs {
     display: block;
@@ -596,7 +598,7 @@ body.night .twikoo code {
     color: #a354b9 !important;
     background-color: #373d48;
   }
-  body:not(.light) .gt-container .gt-comment-admin {
+  body:not(.light) .gt-container .gt-comment-admin .gt-comment-content {
     background-color: #1d2132;
   }
   body:not(.light) body,

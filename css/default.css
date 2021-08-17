@@ -11946,7 +11946,7 @@ body.night .gt-container .gt-comment-body {
   background-color: #373d48;
 }
 body.night .gt-container .gt-comment-admin .gt-comment-content {
-  background-color: #1d2132;
+  background-color: #373d48;
 }
 body.night body,
 body.night strong,
@@ -12310,7 +12310,7 @@ body.night .twikoo code {
     background-color: #373d48;
   }
   body:not(.light) .gt-container .gt-comment-admin .gt-comment-content {
-    background-color: #1d2132;
+    background-color: #373d48;
   }
   body:not(.light) body,
   body:not(.light) strong,

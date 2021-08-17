@@ -11934,6 +11934,12 @@ body.night .v code,
 body.night .v pre {
   background-color: transparent;
 }
+body.night .gt-container .gt-header-textarea {
+  background-color: #373d48;
+}
+body.night textarea {
+  color: #fff;
+}
 body.night body,
 body.night strong,
 body.night time,
@@ -12283,6 +12289,12 @@ body.night .twikoo code {
   body:not(.light) .v code,
   body:not(.light) .v pre {
     background-color: transparent;
+  }
+  body:not(.light) .gt-container .gt-header-textarea {
+    background-color: #373d48;
+  }
+  body:not(.light) textarea {
+    color: #fff;
   }
   body:not(.light) body,
   body:not(.light) strong,

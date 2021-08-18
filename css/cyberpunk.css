@@ -11655,7 +11655,7 @@ figure.highlight .section {
   .is-sticky {
     position: -webkit-sticky;
     position: sticky;
-    top: 1.5rem;
+    top: 0rem;
     z-index: 99;
   }
   .column-main.is-sticky,
@@ -11696,6 +11696,12 @@ body,
   max-height: 500px;
   overflow: auto;
 }
+#toc {
+  align-self: flex-start;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0.75rem;
+}
 .level img {
   border-radius: 100px;
   transition: all 0.5s ease-in;
@@ -11709,6 +11715,12 @@ body,
   -moz-transform: rotate(360deg);
   -o-transform: rotate(360deg);
   -ms-transform: rotate(360deg);
+}
+.footer {
+  padding: 2rem 1.5rem 3rem;
+}
+navbar navbar-main {
+  display: flex;
 }
 #universe {
   display: none;

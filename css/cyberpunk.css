@@ -11719,8 +11719,11 @@ body,
 .footer {
   padding: 2rem 1.5rem 3rem;
 }
-navbar navbar-main {
-  display: flex;
+.card-content {
+  padding: 1rem;
+}
+a:hover {
+  color: #d4237a !important;
 }
 #universe {
   display: none;
@@ -11960,6 +11963,9 @@ body.night .gt-container .gt-comment-body {
 }
 body.night .gt-container .gt-comment-admin .gt-comment-content {
   background-color: #373d48;
+}
+body.night a:hover {
+  color: #d4237a !important;
 }
 body.night body,
 body.night strong,
@@ -12324,6 +12330,9 @@ body.night .twikoo code {
   }
   body:not(.light) .gt-container .gt-comment-admin .gt-comment-content {
     background-color: #373d48;
+  }
+  body:not(.light) a:hover {
+    color: #d4237a !important;
   }
   body:not(.light) body,
   body:not(.light) strong,

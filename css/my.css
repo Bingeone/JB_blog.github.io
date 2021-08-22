@@ -54,6 +54,11 @@ body,
 .footer {
   padding: 2rem 1.5rem 3rem;
 }
-navbar navbar-main {
-  display: flex;
+/* 方盒子内边距由1.5 调整为 1 */
+.card-content {
+  padding: 1rem;
+}
+/* 标签页修饰 */
+a:hover {
+  color: #d4237a !important;
 }

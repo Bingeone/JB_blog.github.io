@@ -11724,6 +11724,11 @@ body,
 a:hover {
   color: #d4237a !important;
 }
+.g-ads-x,
+.g-ads-y,
+.google-auto-placed {
+  filter: brightness(0.8) !important;
+}
 #universe {
   display: none;
 }
@@ -11950,19 +11955,6 @@ body.night .v code,
 body.night .v pre {
   background-color: transparent;
 }
-body.night .gt-container .gt-header-textarea {
-  background-color: #373d48;
-}
-body.night textarea {
-  color: #fff;
-}
-body.night .gt-container .gt-comment-body {
-  color: #a354b9 !important;
-  background-color: #373d48;
-}
-body.night .gt-container .gt-comment-admin .gt-comment-content {
-  background-color: #373d48;
-}
 body.night a:hover {
   color: #d4237a !important;
 }
@@ -12095,6 +12087,19 @@ body.night .twikoo pre {
 }
 body.night .twikoo code {
   color: #cbba7d;
+  background-color: #373d48;
+}
+body.night .gt-container .gt-header-textarea {
+  background-color: #373d48;
+}
+body.night textarea {
+  color: #fff;
+}
+body.night .gt-container .gt-comment-body {
+  color: #a354b9 !important;
+  background-color: #373d48;
+}
+body.night .gt-container .gt-comment-admin .gt-comment-content {
   background-color: #373d48;
 }
 @media (prefers-color-scheme: dark) {
@@ -12317,19 +12322,6 @@ body.night .twikoo code {
   body:not(.light) .v pre {
     background-color: transparent;
   }
-  body:not(.light) .gt-container .gt-header-textarea {
-    background-color: #373d48;
-  }
-  body:not(.light) textarea {
-    color: #fff;
-  }
-  body:not(.light) .gt-container .gt-comment-body {
-    color: #a354b9 !important;
-    background-color: #373d48;
-  }
-  body:not(.light) .gt-container .gt-comment-admin .gt-comment-content {
-    background-color: #373d48;
-  }
   body:not(.light) a:hover {
     color: #d4237a !important;
   }
@@ -12462,6 +12454,19 @@ body.night .twikoo code {
   }
   body:not(.light) .twikoo code {
     color: #cbba7d;
+    background-color: #373d48;
+  }
+  body:not(.light) .gt-container .gt-header-textarea {
+    background-color: #373d48;
+  }
+  body:not(.light) textarea {
+    color: #fff;
+  }
+  body:not(.light) .gt-container .gt-comment-body {
+    color: #a354b9 !important;
+    background-color: #373d48;
+  }
+  body:not(.light) .gt-container .gt-comment-admin .gt-comment-content {
     background-color: #373d48;
   }
 }

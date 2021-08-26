@@ -62,3 +62,9 @@ body,
 a:hover {
   color: #d4237a !important;
 }
+/* 广告位 */
+.g-ads-x,
+.g-ads-y,
+.google-auto-placed {
+  filter: brightness(0.8) !important;
+}

@@ -371,6 +371,13 @@ body.night .gt-container .gt-comment-body {
 body.night .gt-container .gt-comment-admin .gt-comment-content {
   background-color: #373d48;
 }
+body.night .gt-container .gt-comment-content:hover {
+  -webkit-box-shadow: 0 0.625em 3.75em 0 #373d48;
+  box-shadow: 0 0.625em 3.75em 0 #373d48;
+}
+body.night .friend-title-item {
+  color: #c0c0c0;
+}
 @media (prefers-color-scheme: dark) {
   body:not(.light) {
     background: #0e1225;
@@ -737,5 +744,12 @@ body.night .gt-container .gt-comment-admin .gt-comment-content {
   }
   body:not(.light) .gt-container .gt-comment-admin .gt-comment-content {
     background-color: #373d48;
+  }
+  body:not(.light) .gt-container .gt-comment-content:hover {
+    -webkit-box-shadow: 0 0.625em 3.75em 0 #373d48;
+    box-shadow: 0 0.625em 3.75em 0 #373d48;
+  }
+  body:not(.light) .friend-title-item {
+    color: #c0c0c0;
   }
 }

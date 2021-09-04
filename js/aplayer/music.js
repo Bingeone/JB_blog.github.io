@@ -1,6 +1,6 @@
 const ap = new APlayer({
     container: document.getElementById('aplayer'),
-    mini: false,             //不启用迷你播放模式 
+    mini: false,             //不启用迷你播放模式 吸底模式（fixed:true），迷你模式（mini:true），普通模式（注释此行或者设置fixed:false）
     autoplay: false,         //音频不自动播放 
     theme: '#FADFA3',        //主题色 #FADFA3  #ffffffcf
     loop: 'all',             //音频循环播放, 可选值: 'all', 'one', 'none'
@@ -55,4 +55,18 @@ const ap = new APlayer({
             theme: '#46718b'                          
 		}
     ]
+});
+
+//实现切换音频时，根据音频的封面图片自适应主题色
+const colorThief = new ColorThief();
+const setTheme = (index) => {
+  if (!ap.list.audios[index].theme) {
+    colorThief.getColorAsync(ap.list.audios[index].cover, function(color) {
+      ap.theme(`rgb(${color[0]}, ${color[1]}, ${color[2]})`, index);
+    });
+  }
+};
+setTheme(ap.list.index);
+ap.on('listswitch', (data) => {
+  setTheme(data.index);
 });

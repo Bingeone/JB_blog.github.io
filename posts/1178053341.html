@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>Ubuntu20.04下mysql数据库相关操作 - Bingeone博客园</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Bingeone博客园"><meta name="msapplication-TileImage" content="/img/src/logo.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Bingeone博客园"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="安装mysql、重置密码 更新下载源：sudo apt-get update 安装：sudo apt install mysql-server"><meta property="og:type" content="blog"><meta property="og:title" content="Ubuntu20.04下mysql数据库相关操作"><meta property="og:url" content="https://bingeone.top/posts/1178053341.html"><meta property="og:site_name" content="Bingeone博客园"><meta property="og:description" content="安装mysql、重置密码 更新下载源：sudo apt-get update 安装：sudo apt install mysql-server"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://i.52112.com/icon/256/20161207/4100/217215.png"><meta property="article:published_time" content="2021-09-06T12:46:04.143Z"><meta property="article:modified_time" content="2021-09-06T14:04:54.942Z"><meta property="article:author" content="Bingeone"><meta property="article:tag" content="python"><meta property="article:tag" content="mysql"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="https://i.52112.com/icon/256/20161207/4100/217215.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://bingeone.top/posts/1178053341.html"},"headline":"Ubuntu20.04下mysql数据库相关操作","image":["https://i.52112.com/icon/256/20161207/4100/217215.png"],"datePublished":"2021-09-06T12:46:04.143Z","dateModified":"2021-09-06T14:04:54.942Z","author":{"@type":"Person","name":"Bingeone"},"publisher":{"@type":"Organization","name":"Bingeone博客园","logo":{"@type":"ImageObject","url":{"light":"/img/src/mylogo.png","dark":"/img/src/mylogo.png"}}},"description":"安装mysql、重置密码 更新下载源：sudo apt-get update 安装：sudo apt install mysql-server"}</script><link rel="canonical" href="https://bingeone.top/posts/1178053341.html"><link rel="icon" href="/img/src/logo.png"><link rel="stylesheet" href="/css/font/fontawesome/css2/all.min.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css"><link rel="stylesheet" href="/css/font/font.css"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/cookieconsent/3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="/gallery/lightgallery.css"><link rel="stylesheet" href="/gallery/justifiedGallery.min.css"><!--!--><!--!--><!--!--><script src="https://cdnjs.loli.net/ajax/libs/pace/1.0.2/pace.min.js"></script><!--!--><!--!--><script src="https://zz.bdstatic.com/linksubmit/push.js" defer></script><meta name="generator" content="Hexo 5.4.0"></head><body class="is-3-column"><script type="text/javascript" src="/js/night/night.js"></script><canvas id="universe"></canvas><nav class="navbar navbar-main is-sticky"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img class="logo-img" src="/img/src/mylogo.png" alt="Bingeone博客园" height="28"><img class="logo-img-dark" src="/img/src/mylogo.png" alt="Bingeone博客园" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">首页</a><a class="navbar-item" href="/archives">归档</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a><a class="navbar-item" href="/bookmark">书签</a><a class="navbar-item" href="/talking">说说</a><a class="navbar-item" href="/friends">友链</a><a class="navbar-item" href="/about">关于</a></div><div class="navbar-end"><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item night" id="night-nav" title="Night Mode" href="javascript:;"><i class="fas fa-moon" id="night-icon" style="color:#d4237a"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><link rel="stylesheet" href="/css/iconfont.css"><i class="iconfont icon-sousuo3"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2021-09-06T12:46:04.143Z" title="2021/9/6 下午8:46:04">2021-09-06</time>发表</span><span class="level-item"><time dateTime="2021-09-06T14:04:54.942Z" title="2021/9/6 下午10:04:54">2021-09-06</time>更新</span><span class="level-item"><a class="link-muted" href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></span><span class="level-item" id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv">0</span>次访问</span></div></div><h1 class="title is-3 is-size-4-mobile">Ubuntu20.04下mysql数据库相关操作</h1><div class="content"><h3 id="安装mysql、重置密码"><a href="#安装mysql、重置密码" class="headerlink" title="安装mysql、重置密码"></a>安装mysql、重置密码</h3><ul>
+<li>更新下载源：sudo apt-get update</li>
+<li>安装：sudo apt install mysql-server</li>
+</ul>
+<span id="more"></span>
+
+<p><img src="https://i.loli.net/2021/09/06/Aqf6QprFeaYOEI1.png"></p>
+<ul>
+<li>安装mysql客户端：sudo apt install mysql-client</li>
+</ul>
+<p><img src="https://i.loli.net/2021/09/06/RHr3MOe6QIFg9Cb.png"></p>
+<ul>
+<li>重启mysql服务：sudo service mysql restart</li>
+<li>配置mysql：sudo mysql_secure_installation</li>
+</ul>
+<p><img src="https://i.loli.net/2021/09/06/KXRMQHw3SOhpB1x.png"></p>
+<ul>
+<li>接上述内容</li>
+</ul>
+<p><img src="https://i.loli.net/2021/09/06/9Srutcn58sDv4Lg.png" alt="2021-09-06 18-52-29屏幕截图.png"></p>
+<ul>
+<li>接上述内容</li>
+</ul>
+<p><img src="https://i.loli.net/2021/09/06/mR1zpeCZnXovDP9.png"></p>
+<ul>
+<li>用最大权限直接登陆mysql</li>
+</ul>
+<p><img src="https://i.loli.net/2021/09/06/JW1l9INLYhkCsXP.png"></p>
+<ul>
+<li>select user,authentication_string,plugin,host from mysql.user;</li>
+</ul>
+<img src="https://i.loli.net/2021/09/06/82W3aj1fxTRQlIr.png" style="zoom:150%;" />
+
+<ul>
+<li>直接输入重置密码：ALTER USER ‘root‘@’localhost’ IDENTIFIED BY “123456”;        结果大概率报错（ERROR 1819），显示密码过于简单不满足要求</li>
+<li>查看密码要求： show variables like ‘validate_password%’;</li>
+</ul>
+<img src="https://i.loli.net/2021/09/06/YZHVvwO8enqom2y.png" style="zoom:150%;" />
+
+<ul>
+<li>密码重置配置</li>
+</ul>
+<blockquote>
+<p>mysql&gt; set global validate_password.policy=0;</p>
+<p>Query OK, 0 rows affected (0.00 sec)</p>
+<p>mysql&gt; set global validate_password.length=1;</p>
+<p>Query OK, 0 rows affected (0.01 sec)</p>
+<p>mysql&gt; alter user ‘root’@‘localhost’ identified by ‘123456’;        </p>
+<p>Query OK, 0 rows affected (0.04 sec)</p>
+<p>mysql&gt; flush privileges;        </p>
+<p>Query OK, 0 rows affected (0.04 sec)</p>
+<p>mysql&gt; ALTER USER ‘root‘@’localhost’ IDENTIFIED WITH caching_sha2_password by ‘123456’;    </p>
+<p>Query OK, 0 rows affected (0.04 sec)</p>
+</blockquote>
+<img src="https://i.loli.net/2021/09/06/R4DSeAtuJ2VqIp6.png" style="zoom:150%;" />
+
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/ingenuou_/article/details/107602508">详情参考该博文</a></p>
+<h3 id="Ubuntu下彻底卸载mysql数据库"><a href="#Ubuntu下彻底卸载mysql数据库" class="headerlink" title="Ubuntu下彻底卸载mysql数据库"></a>Ubuntu下彻底卸载mysql数据库</h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">1、查看相关文件</span><br><span class="line">dpkg --list|grep mysql</span><br><span class="line">2、卸载</span><br><span class="line">sudo apt-get remove mysql-common</span><br><span class="line">3、卸载</span><br><span class="line">sudo apt-get autoremove --purge mysql-server-5.7</span><br><span class="line">4、清除残留数据</span><br><span class="line">dpkg -l|grep ^rc|awk &#x27;&#123;print$2&#125;&#x27;|sudo xargs dpkg -P</span><br><span class="line">5、查看MySQL的剩余依赖项</span><br><span class="line">dpkg --list|grep mysql</span><br><span class="line">6、继续删除剩余依赖项</span><br><span class="line">sudo apt-get autoremove --purge mysql-apt-config</span><br></pre></td></tr></table></figure>
+
+</div><div class="article-licensing box"><div class="licensing-title"><p>Ubuntu20.04下mysql数据库相关操作</p><p><a href="https://bingeone.top/posts/1178053341.html">https://bingeone.top/posts/1178053341.html</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>Bingeone</p></div></div><div class="level-item is-narrow"><div><h6>发布</h6><p>2021-09-06</p></div></div><div class="level-item is-narrow"><div><h6>更新</h6><p>2021-09-06</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/python/">python</a><a class="link-muted mr-2" rel="tag" href="/tags/mysql/">mysql</a></div><div class="sharethis-inline-share-buttons"></div><script src="https://platform-api.sharethis.com/js/sharethis.js#property=6119c76e49ea8f00167b1939&amp;product=sop" defer></script></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/posts/1328111034.html"><span class="level-item">Python学习&lt;第一部分&gt;</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><div id="comment-container"></div><link rel="stylesheet" href="/js/gitalk/gitalk.css"><script src="/js/gitalk/gitalk.min.js"></script><script>var gitalk = new Gitalk({
+             id: 'abef71cdc94ff51ca72795ee1d289c4d',
+             repo: 'blog_gitalk_comments',
+             owner: 'Bingeone',
+             clientID: 'ea77384cddc353829f2f',
+             clientSecret: 'd21dd0f553bcf6d66e6dc36acea8838a75ec48cf',
+             admin: "Bingeone",
+             createIssueManually: false,
+             distractionFreeMode: false,
+             perPage: 10,
+             pagerDirection: 'last',
+             
+             
+             enableHotKey: true
+         })
+         gitalk.render('comment-container')</script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1"><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><figure class="media-left"><a class="image" href="/posts/1178053341.html"><img src="https://i.52112.com/icon/256/20161207/4100/217215.png" alt="Ubuntu20.04下mysql数据库相关操作"></a></figure><div class="media-content"><p class="date"><time dateTime="2021-09-06T12:46:04.143Z">2021-09-06</time></p><p class="title"><a href="/posts/1178053341.html">Ubuntu20.04下mysql数据库相关操作</a></p><p class="categories"><a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></p></div></article><article class="media"><figure class="media-left"><a class="image" href="/posts/1328111034.html"><img src="http://cdn.zhangyanc.club/cdn/banner/banner-3.jpg" alt="Python学习&lt;第一部分&gt;"></a></figure><div class="media-content"><p class="date"><time dateTime="2021-09-04T11:33:46.025Z">2021-09-04</time></p><p class="title"><a href="/posts/1328111034.html">Python学习&lt;第一部分&gt;</a></p><p class="categories"><a href="/categories/fluent-python/">fluent_python</a></p></div></article><article class="media"><figure class="media-left"><a class="image" href="/posts/2752460855.html"><img src="https://www.opengis.ch/wp-content/uploads/2020/04/django-python-logo.png" alt="初始化Django项目一般流程(虚拟环境venv)"></a></figure><div class="media-content"><p class="date"><time dateTime="2021-09-01T09:08:25.000Z">2021-09-01</time></p><p class="title"><a href="/posts/2752460855.html">初始化Django项目一般流程(虚拟环境venv)</a></p><p class="categories"><a href="/categories/%E7%BC%96%E7%A8%8B/">编程</a></p></div></article><article class="media"><figure class="media-left"><a class="image" href="/posts/1555555841.html"><img src="http://cdn.zhangyanc.club/cdn/banner/banner-3.jpg" alt="内置函数(二)"></a></figure><div class="media-content"><p class="date"><time dateTime="2021-08-19T06:12:47.000Z">2021-08-19</time></p><p class="title"><a href="/posts/1555555841.html">内置函数(二)</a></p><p class="categories"><a href="/categories/%E7%BC%96%E7%A8%8B/">编程</a></p></div></article><article class="media"><figure class="media-left"><a class="image" href="/posts/5655611541.html"><img src="http://allpcworld.com/wp-content/uploads/2016/09/Ubuntu-latest-version-free-download.jpg" alt="Linux 基础知识"></a></figure><div class="media-content"><p class="date"><time dateTime="2021-08-11T08:45:25.000Z">2021-08-11</time></p><p class="title"><a href="/posts/5655611541.html">Linux 基础知识</a></p><p class="categories"><a href="/categories/Linux/">Linux</a></p></div></article></div></div><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#安装mysql、重置密码"><span class="level-left"><span class="level-item">1</span><span class="level-item">安装mysql、重置密码</span></span></a></li><li><a class="level is-mobile" href="#Ubuntu下彻底卸载mysql数据库"><span class="level-left"><span class="level-item">2</span><span class="level-item">Ubuntu下彻底卸载mysql数据库</span></span></a></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div><div class="column-right-shadow is-hidden-widescreen"></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img class="logo-img" src="/img/src/mylogo.png" alt="Bingeone博客园" height="28"><img class="logo-img-dark" src="/img/src/mylogo.png" alt="Bingeone博客园" height="28"></a><p class="is-size-7"><span>&copy; 2021 Bingeone</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a><br><span><span id="statistic-times">loading...</span><script>function createTime(time) {
+            var n = new Date(time);
+            now.setTime(now.getTime() + 250),
+                days = (now - n) / 1e3 / 60 / 60 / 24,
+                dnum = Math.floor(days),
+                hours = (now - n) / 1e3 / 60 / 60 - 24 * dnum,
+                hnum = Math.floor(hours),
+            1 == String(hnum).length && (hnum = "0" + hnum),
+                minutes = (now - n) / 1e3 / 60 - 1440 * dnum - 60 * hnum,
+                mnum = Math.floor(minutes),
+            1 == String(mnum).length && (mnum = "0" + mnum),
+                seconds = (now - n) / 1e3 - 86400 * dnum - 3600 * hnum - 60 * mnum,
+                snum = Math.round(seconds),
+            1 == String(snum).length && (snum = "0" + snum),
+                document.getElementById("statistic-times").innerHTML = "⭐本站自 <strong>"+time.split(" ")[0].replace(/\//g,".")+"</strong> 已坚守 <strong>" + dnum + "</strong> 天 <strong>" + hnum + "</strong> 小时 <strong>" + mnum + "</strong> 分 <strong>" + snum + "</strong> 秒！⭐";
+        }var now = new Date();setInterval("createTime('2021/08/01 00:00:00')", 250,"");</script></span><br><span><a href="http://www.baidu.com" target="_blank">琼ICP备000000号(测试)</a> - </span><span>⭐感谢 <strong><span id="busuanzi_value_site_uv">99+</span></strong> 小伙伴的 <strong><span id="busuanzi_value_site_pv">99+</span></strong> 次赏目！⭐</span></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Star me" href="https://github.com/Bingeone"><i class="iconfont icon-github"></i></a></p></div><div class="sideMusic"><script src="/js/aplayer/APlayer.min.js"></script><script src="/js/aplayer/Meting.min.js"></script><meting-js style="width: auto;height: 1000px;" server="netease" type="playlist" id="1875268931" theme="#2980b9" loop="all" autoplay="false" order="list" storageName="aplayer-setting" lrctype="0" list-max-height="200px" fixed="true"></meting-js></div></div></div></div></footer><script src="/js/jquery-3.4.1.min.js"></script><script src="https://cdnjs.loli.net/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script><script src="https://cdnjs.loli.net/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" defer></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><!--!--><script src="https://cdnjs.loli.net/ajax/libs/cookieconsent/3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: null,
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="/gallery/lightgallery.min.js" defer></script><script src="/gallery/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+             if (typeof $.fn.lightGallery === 'function') {
+                 $('.article').lightGallery({ selector: '.gallery-item' });
+             }
+             if (typeof $.fn.justifiedGallery === 'function') {
+                 if ($('.justified-gallery > p > .gallery-item').length) {
+                     $('.justified-gallery > p > .gallery-item').unwrap();
+                 }
+                 $('.justified-gallery').justifiedGallery();
+             }
+         });</script><!--!--><!--!--><script type="text/x-mathjax-config">MathJax.Hub.Config({
+             'HTML-CSS': {
+                 matchFontHeight: false
+             },
+             SVG: {
+                 matchFontHeight: false
+             },
+             CommonHTML: {
+                 matchFontHeight: false
+             },
+             tex2jax: {
+                 inlineMath: [
+                     ['$','$'],
+                     ['\\(','\\)']
+                 ]
+             }
+         });</script><script src="https://cdnjs.loli.net/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" defer></script><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script><script type="text/javascript" src="/js/night/universe.js"></script><script src="/js/click.js"></script><link rel="stylesheet" href="/js/aplayer/APlayer2.min.css"><script type="text/javascript" src="/js/aplayer/APlayer.min.js"></script><script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=6119c76e49ea8f00167b1939&amp;product=sop" async="async"></script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"react":{"opacity":0.7},"log":false});</script></body></html>

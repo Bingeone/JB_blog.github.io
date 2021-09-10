@@ -5,6 +5,9 @@
 .footer-logo .logo-img-dark {
   display: none;
 }
+.navbar-menu {
+  background-color: rgba(21,24,32,0) !important;
+}
 body.night {
   background: #0e1225;
 /* gitalk 样式优化 */

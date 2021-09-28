@@ -11840,9 +11840,18 @@ article.article .top-icon {
 .navbar-menu {
   background-color: rgba(21,24,32,0) !important;
 }
+.content h1,
+.content h2,
+.content h3,
+.content h4,
+.content h5,
+.content h6 {
+  color: rgba(4,198,101,0.788);
+}
 body.night {
   background: #0e1225;
 /* gitalk 样式优化 */
+/* 走马灯背景色*/
 }
 body.night .hljs {
   display: block;
@@ -12068,12 +12077,6 @@ body.night time,
 body.night .title,
 body.night .footer,
 body.night .card,
-body.night .content h1,
-body.night .content h2,
-body.night .content h3,
-body.night .content h4,
-body.night .content h5,
-body.night .content h6,
 body.night .navbar-item,
 body.night .navbar-item.is-active,
 body.night .navbar-link,
@@ -12213,10 +12216,14 @@ body.night .gt-container .gt-comment-content:hover {
 body.night .friend-title-item {
   color: #c0c0c0;
 }
+body.night .scroll_horizontal .list li {
+  background-color: #252937;
+}
 @media (prefers-color-scheme: dark) {
   body:not(.light) {
     background: #0e1225;
 /* gitalk 样式优化 */
+/* 走马灯背景色*/
   }
   body:not(.light) .hljs {
     display: block;
@@ -12442,12 +12449,6 @@ body.night .friend-title-item {
   body:not(.light) .title,
   body:not(.light) .footer,
   body:not(.light) .card,
-  body:not(.light) .content h1,
-  body:not(.light) .content h2,
-  body:not(.light) .content h3,
-  body:not(.light) .content h4,
-  body:not(.light) .content h5,
-  body:not(.light) .content h6,
   body:not(.light) .navbar-item,
   body:not(.light) .navbar-item.is-active,
   body:not(.light) .navbar-link,
@@ -12586,5 +12587,8 @@ body.night .friend-title-item {
   }
   body:not(.light) .friend-title-item {
     color: #c0c0c0;
+  }
+  body:not(.light) .scroll_horizontal .list li {
+    background-color: #252937;
   }
 }

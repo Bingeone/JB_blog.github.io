@@ -1,0 +1,103 @@
+/* * {
+  margin: 0px;
+  bottom: 0px;
+  padding: 0px;
+  list-style: none;
+  text-decoration: none;
+} */
+
+/* body {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(170, 190, 250);
+} */
+
+.shell {
+  width: auto;
+  height: 210px;
+  position: relative;
+  overflow-x: hidden;
+  border-radius: 5px;
+  border: 0px #fff solid;
+  box-shadow: 20px 30px 20px rgba(0, 0, 0, 0.5);
+}
+.images {
+  width: 500%;
+  height: 100%;
+  display: flex;
+  position: absolute;
+  left: 0;
+  transition: 0.5s;
+}
+.img {
+  width: 100%;
+  background-size: cover;
+}
+.img:nth-child(1) {
+  background-image: url(http://www.dnzhuti.com/uploads/allimg/170323/95-1F323144449.jpg);
+}
+.img:nth-child(2) {
+  background-image: url(http://www.dnzhuti.com/uploads/allimg/170323/95-1F323144448.jpg);
+}
+.img:nth-child(3) {
+  background-image: url(http://www.dnzhuti.com/uploads/allimg/170323/95-1F323144452.jpg);
+}
+.img:nth-child(4) {
+  background-image: url(https://wallpaperm.cmcm.com/b00079965df2817fdd895c0764e4c541.jpg);
+}
+.img:nth-child(5) {
+  background-image: url(http://www.dnzhuti.com/uploads/allimg/170802/95-1FP21I642.jpg);
+}
+.min-images {
+  display: flex;
+  justify-content: space-evenly;
+  position: absolute;
+  bottom: 10px;
+  width: 60%;
+  z-index: 2;
+  right: 3%;
+}
+.min {
+  width: 35px;
+  height: 35px;
+  /* 鼠标悬浮时显示按钮指针 */
+  cursor: pointer;
+  border-radius: 50%;
+  background-size: cover;
+  border: solid 2px rgba(255, 255, 255, 0.5);
+  /* 照片偏移量 */
+  background-position: -20px 0;
+}
+.min:nth-child(1) {
+  background-image: url(http://www.dnzhuti.com/uploads/allimg/170323/95-1F323144449.jpg);
+}
+.min:nth-child(2) {
+  background-image: url(http://www.dnzhuti.com/uploads/allimg/170323/95-1F323144448.jpg);
+}
+.min:nth-child(3) {
+  background-image: url(http://www.dnzhuti.com/uploads/allimg/170323/95-1F323144452.jpg);
+}
+.min:nth-child(4) {
+  background-image: url(https://wallpaperm.cmcm.com/b00079965df2817fdd895c0764e4c541.jpg);
+}
+.min:nth-child(5) {
+  background-image: url(http://www.dnzhuti.com/uploads/allimg/170802/95-1FP21I642.jpg);
+}
+.button_a {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  user-select: none;
+}
+.button-left,
+.button-right {
+  /* font-size: 50px; */
+  /* background-color: rgba(160, 190, 255, 0.7); */
+  padding: 0 5px;
+  line-height: 200px;
+  cursor: pointer;
+}

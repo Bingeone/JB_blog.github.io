@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>Git版本控制精简版 - Bingeone博客园</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Bingeone博客园"><meta name="msapplication-TileImage" content="/img/src/logo.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Bingeone博客园"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="Git是一种强大高效VCS(version control system版本控制系统)，能够实现项目文件过程的实时监控。git使用方式与其他版本控制系统（如CVS、Subversion、Perfoce）类似，但前后者之间区别的：git保存处理数据，对当时项目状态采用创建一种快照的索引方式；后者处理存储信息是基于文件随时间累积差异。 Git的特点 直接记录快照，而非差异比较 近乎所有操作都是本地执行"><meta property="og:type" content="blog"><meta property="og:title" content="Git版本控制精简版"><meta property="og:url" content="https://bingeone.top/posts/2489357851.html"><meta property="og:site_name" content="Bingeone博客园"><meta property="og:description" content="Git是一种强大高效VCS(version control system版本控制系统)，能够实现项目文件过程的实时监控。git使用方式与其他版本控制系统（如CVS、Subversion、Perfoce）类似，但前后者之间区别的：git保存处理数据，对当时项目状态采用创建一种快照的索引方式；后者处理存储信息是基于文件随时间累积差异。 Git的特点 直接记录快照，而非差异比较 近乎所有操作都是本地执行"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://superdevresources.com/wp-content/uploads/2015/01/GIT-logo_300x300.jpg"><meta property="article:published_time" content="2021-10-14T11:58:36.998Z"><meta property="article:modified_time" content="2021-10-14T12:36:35.323Z"><meta property="article:author" content="Bingeone"><meta property="article:tag" content="git"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="https://superdevresources.com/wp-content/uploads/2015/01/GIT-logo_300x300.jpg"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://bingeone.top/posts/2489357851.html"},"headline":"Git版本控制精简版","image":["https://superdevresources.com/wp-content/uploads/2015/01/GIT-logo_300x300.jpg"],"datePublished":"2021-10-14T11:58:36.998Z","dateModified":"2021-10-14T12:36:35.323Z","author":{"@type":"Person","name":"Bingeone"},"publisher":{"@type":"Organization","name":"Bingeone博客园","logo":{"@type":"ImageObject","url":{"light":"/img/src/mylogo.png","dark":"/img/src/mylogo.png"}}},"description":"Git是一种强大高效VCS(version control system版本控制系统)，能够实现项目文件过程的实时监控。git使用方式与其他版本控制系统（如CVS、Subversion、Perfoce）类似，但前后者之间区别的：git保存处理数据，对当时项目状态采用创建一种快照的索引方式；后者处理存储信息是基于文件随时间累积差异。 Git的特点 直接记录快照，而非差异比较 近乎所有操作都是本地执行"}</script><link rel="canonical" href="https://bingeone.top/posts/2489357851.html"><link rel="icon" href="/img/src/logo.png"><link rel="stylesheet" href="/css/font/fontawesome/css2/all.min.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css"><link rel="stylesheet" href="/css/font/font.css"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/cookieconsent/3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/justifiedGallery/3.7.0/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><script src="https://cdnjs.loli.net/ajax/libs/pace/1.0.2/pace.min.js"></script><!--!--><!--!--><script src="https://zz.bdstatic.com/linksubmit/push.js" defer></script><meta name="generator" content="Hexo 5.4.0"></head><body class="is-3-column"><script type="text/javascript" src="/js/night/night.js"></script><canvas id="universe"></canvas><nav class="navbar navbar-main is-sticky"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img class="logo-img" src="/img/src/mylogo.png" alt="Bingeone博客园" height="28"><img class="logo-img-dark" src="/img/src/mylogo.png" alt="Bingeone博客园" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">首页</a><a class="navbar-item" href="/archives">归档</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a><a class="navbar-item" href="/bookmark">书签</a><a class="navbar-item" href="/talking">说说</a><a class="navbar-item" href="/friends">友链</a><a class="navbar-item" href="/about">关于</a></div><div class="navbar-end"><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item night" id="night-nav" title="Night Mode" href="javascript:;"><i class="fas fa-moon" id="night-icon" style="color:#d4237a"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><link rel="stylesheet" href="/css/iconfont.css"><i class="iconfont icon-sousuo3"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2021-10-14T11:58:36.998Z" title="2021/10/14 下午7:58:36">2021-10-14</time>发表</span><span class="level-item"><time dateTime="2021-10-14T12:36:35.323Z" title="2021/10/14 下午8:36:35">2021-10-14</time>更新</span><span class="level-item" id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv">0</span>次访问</span></div></div><h1 class="title is-3 is-size-4-mobile">Git版本控制精简版</h1><div class="content"><p><a target="_blank" rel="noopener" href="https://git-scm.com/">Git</a>是一种强大高效VCS(version control system版本控制系统)，能够实现项目文件过程的实时监控。git使用方式与其他版本控制系统（如CVS、Subversion、Perfoce）类似，但前后者之间区别的：git保存处理数据，对当时项目状态采用创建一种快照的索引方式；后者处理存储信息是基于文件随时间累积差异。</p>
+<h3 id="Git的特点"><a href="#Git的特点" class="headerlink" title="Git的特点"></a>Git的特点</h3><ul>
+<li>直接记录快照，而非差异比较</li>
+<li>近乎所有操作都是本地执行</li>
+<li>Git 保证完整性</li>
+<li>Git 一般只添加数据</li>
+<li>三种状态：<strong>已提交</strong>（committed）、<strong>已修改</strong>（modified） 和 <strong>已暂存</strong>（staged）<ul>
+<li>已修改表示修改了文件，但还没保存到数据库中</li>
+<li>已暂存表示对一个已修改文件的当前版本做了标记，使之包含在下次提交的快照中</li>
+<li>已提交表示数据已经安全地保存在本地数据库中</li>
+</ul>
+</li>
+<li>三个阶段：工作区、暂存区以及 Git 目录<ul>
+<li>工作区（操作文件的目录文件）是对项目的某个版本独立提取出来的内容</li>
+<li>暂存区是一个文件（过度文件），保存了下次提交的文件列表信息，一般在 Git 仓库目录中</li>
+<li>Git 仓库目录（.git directory目录文件）是 Git 用来保存项目的元数据和对象数据库的地方</li>
+</ul>
+</li>
+</ul>
+<h3 id="Git安装"><a href="#Git安装" class="headerlink" title="Git安装"></a>Git安装</h3><p>windows下:</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://git-scm.com/download/win">git官网下载</a></p>
+</blockquote>
+<p>ubuntu下:</p>
+<blockquote>
+<p>linux各个发行版<a target="_blank" rel="noopener" href="https://git-scm.com/download/linux">安装Git命令</a></p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 更新安装源</span></span><br><span class="line">sudo apt-get update</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装git</span></span><br><span class="line">sudo apt-get install git</span><br></pre></td></tr></table></figure>
+
+<span id="more"></span>
+
+<h3 id="Git-使用前配置"><a href="#Git-使用前配置" class="headerlink" title="Git 使用前配置"></a>Git 使用前配置</h3><ol>
+<li><p>git config –global user.name 提交人姓名</p>
+</li>
+<li><p>git config –global user.email  提交人邮箱</p>
+</li>
+<li><p>git config –list  查看配置信息</p>
+</li>
+<li><p>如需要修改，重复上述命令即可</p>
+</li>
+</ol>
+<h3 id="常用操作命令"><a href="#常用操作命令" class="headerlink" title="常用操作命令"></a>常用操作命令</h3><ol start="0">
+<li><p>git init 初始化git仓库</p>
+</li>
+<li><p>git status  查看过渡区的文件状况</p>
+</li>
+<li><p>git add 文件名  提交文件到过渡区</p>
+</li>
+<li><p>git commit -m ‘提交注释’正式提交到git的本地仓库</p>
+</li>
+<li><p>git log 查看提交的记录</p>
+</li>
+<li><p>git diff HEAD – 文件名 查看此文件变动信息</p>
+</li>
+<li><p>git restore  文件名       可以从git本地仓库中下载文件到工作目录<br> git reset HEAD 文件名      从缓存取撤回文件</p>
+</li>
+<li><p>git log –pretty=oneline     查看提交 版本信息在一行显示<br> git log –oneline        每行显示一条commit</p>
+</li>
+<li><p>git reset –hard HEAD~3          表示回退3个版本（^^^三个版本，可以回退删除的文件）<br> git reset –hard 版本信息标识     可以回退到指定的版本</p>
+</li>
+<li><p>git reflog  可以查看所有的提交信息，包括之前回退后没有标识信息的版本</p>
+</li>
+<li><p>git ls-files   查看git本地仓库的文件信息</p>
+</li>
+<li><p>git checkout – 文件名   可以从git本地仓库中下载文件到工作目录（工作目录文件可以直接删除）<br>  git checkout 分支名        切换分支（或  git switch 分支名）<br>  git checkout -b 分支名    创建分支并切换到该分支上<br>  git checkout -m|-M          重命名分支<br>  git branch 分支名            创建分支<br>  git branch                         查看分支列</p>
+<p>  git merge 分支名         将该分支上的文件合并到master 上（在切换到master的前提下）<br>  git branch -d 分支名    将该分支删除        </p>
+</li>
+<li><p>git rm 文件名    可以删除git本地仓库和工作目录的文件<br> git add 文件名  可以删除已存在的文件（没有就是添加）</p>
+</li>
+<li><p><strong>主干和分支冲突（conflict）解决</strong><br> 冲突出现：通道上会显示主干和分支两个名字 （同一个文件同一行内容不同，产生冲突）<br> 解决方式：需要在主干（main）上对应的文件进行冲突内容的修改，并再一次提交（commit），这时通道就会切回一个支干，（注：分支上的对应文件的内容不会相应修改，只能以主干上的为准，只是解决操作显示错误问题，不能够同时修改主干和分支的文件内容）<br> git log –graph –pretty=oneline    查看冲突线路图</p>
+</li>
+<li><p><strong>多人协同冲突</strong><br> 冲突出现：（同一个文件同一行内容不同，产生冲突） push远程时会报错冲突<br> 解决方式： 需要将内容pull下来，然后查看相关冲突的文档内容并修改，再次commit，并push就可以<br> 一般操作先从远程pull，修改不同内容后再commit</p>
+</li>
+<li><p><strong>标签操作</strong>（tag：相当给当前打标签文件进行压缩保存包，可以直接下载）<br> git tag                              查看所有带标签的号<br> git tag  标签号                对当前支干通道打标签<br> git tag  标签号  版本标识            对某个文件打标签<br> git tag  -a 标签号 -m ‘注释内容’ 版本标识    对某个文件打标签，并加注释内容</p>
+<p> git push origin –tags            推送所有没有被推送的标签<br> git push origin :refs/tags/v1.0(标签号)        删除远程标签<br> git tag -d v1.0（标签号）            删除本地标签</p>
+</li>
+</ol>
+<h3 id="与Github关联方法"><a href="#与Github关联方法" class="headerlink" title="与Github关联方法"></a>与Github关联方法</h3><ul>
+<li>方式一：本地先建好仓库，在github上再建仓库</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen –t rsa(生成秘钥key，用于关联远程仓库，如github)，生成了id_rsa和id_rsa.pub</span><br><span class="line">将生成id_rsa.pub用记事本或者其他软件打开，将其全部复制到github上</span><br><span class="line">再点击New SSH key</span><br><span class="line">Tile 是填写SSH key的标题名字</span><br><span class="line">Key 是id_rsa.pub复制的文件数据内容，</span><br><span class="line">测试是否关联成功：ssh -T git@github.com</span><br><span class="line">	对于 oschina 的 “码云” ，执行 ssh -T git@git.oschina.net</span><br><span class="line">	对于 coding 的 “码市” ，执行 ssh -T git@git.coding.net</span><br><span class="line"></span><br><span class="line">git branch -a 	 	    查看所有分支（远程和本地）</span><br><span class="line">git push origin dev1	推送本地某个分支到远程</span><br><span class="line">git push origin :dev1	删除远程某个分子</span><br><span class="line"></span><br><span class="line">git fetch			在github上手动添加分支，需要这个命令刷新</span><br><span class="line">git checkout -b dev2 origin/dev2	将远程新建的分支下载到本地，并切换到该分支上</span><br></pre></td></tr></table></figure>
+
+
+
+<ul>
+<li>方式二：在github上先建仓库，再将其git clone下来（也能关联远程）</li>
+</ul>
+<h3 id="操作注意事项"><a href="#操作注意事项" class="headerlink" title="操作注意事项"></a>操作注意事项</h3><blockquote>
+<p>一般在分支上提交修改文件，然后git switch main 切换到主分支上，再推送到远程仓库<br>不能在要删除的分支上使用 git branch -d 删除该分支</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#git status中文乱码问题</span></span><br><span class="line">	git config --global core.quotepath <span class="literal">false</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#git log 乱码问题</span></span><br><span class="line">	git config --global i18n.commitencoding utf-8</span><br><span class="line">	git config --global i18n.logoutputencoding utf-8</span><br><span class="line"><span class="comment">#删除未被追踪（tracked）</span></span><br><span class="line">	git clean -xf</span><br><span class="line"></span><br><span class="line"><span class="comment">#区域关系：</span></span><br><span class="line">	workspace即工作区，也就是本地计算机</span><br><span class="line">	staging 即版本库中的stage，暂存区</span><br><span class="line">	<span class="built_in">local</span> repository 即版本库中的master（main），也称本地仓库</span><br><span class="line">	Remote repository 则是远程仓库</span><br><span class="line"></span><br><span class="line"><span class="comment">#用git config命令查看配置文件：</span></span><br><span class="line">	命令参数 –list, 简写 -l</span><br><span class="line">	格式：git config  -l</span><br><span class="line">	查看仓库级的config，即.git/.config，命令：git config --<span class="built_in">local</span> -l</span><br><span class="line">	查看全局级的config，即C:\Users\.gitconfig，命令：git config --global -l</span><br><span class="line">	查看系统级的config，即D:\Program Files\Git\etc\gitconfig，命令：git config --system -l</span><br><span class="line"></span><br><span class="line"><span class="comment">#用git config命令编辑配置文件（一般在电脑所对应的文件修改，即上述）</span></span><br><span class="line">	命令参数 –edit, 简写 -e</span><br><span class="line">	格式：git config [–<span class="built_in">local</span>|–global|–system] -e</span><br><span class="line">	查看仓库级的config，即.git/.config，命令：git config --<span class="built_in">local</span> -e，git config -e默认是<span class="comment">#编辑仓库级的配置文件。</span></span><br><span class="line">	查看全局级的config，即C:\Users\zuoyu.ht\.gitconfig，命令：git config --global -e</span><br><span class="line">	查看系统级的config，即D:\Program Files\Git\etc\gitconfig，命令：git config --system -e</span><br></pre></td></tr></table></figure>
+
+<p><strong>学习资料</strong></p>
+<p><a target="_blank" rel="noopener" href="https://git-scm.com/book/zh/v2">git学习手册下载</a></p>
+<p><a target="_blank" rel="noopener" href="https://git-scm.com/downloads/guis/">GUI可视化工具</a>：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://tortoisegit.org/download/">TortoiseGit(小乌龟) </a> </li>
+<li><a target="_blank" rel="noopener" href="https://www.sourcetreeapp.com/enterprise">Source Tree</a></li>
+</ul>
+</div><hr><div class="article-licensing box"><div class="licensing-title"><p>Git版本控制精简版</p><p><a href="https://bingeone.top/posts/2489357851.html">https://bingeone.top/posts/2489357851.html</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>Bingeone</p></div></div><div class="level-item is-narrow"><div><h6>发布</h6><p>2021-10-14</p></div></div><div class="level-item is-narrow"><div><h6>更新</h6><p>2021-10-14</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><link rel="stylesheet" href="/css/iconfont.css"><div class="sharethis-inline-share-buttons"></div><script src="https://platform-api.sharethis.com/js/sharethis.js#property=6119c76e49ea8f00167b1939&amp;product=sop" defer></script></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/posts/3517918973.html"><span class="level-item">Vim常用快捷操作</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><div id="comment-container"></div><link rel="stylesheet" href="/js/gitalk/gitalk.css"><script src="/js/gitalk/gitalk.min.js"></script><script>var gitalk = new Gitalk({
+             id: 'a2eecf8fe643719cd99b701622f266fd',
+             repo: 'blog_gitalk_comments',
+             owner: 'Bingeone',
+             clientID: 'ea77384cddc353829f2f',
+             clientSecret: 'd21dd0f553bcf6d66e6dc36acea8838a75ec48cf',
+             admin: "Bingeone",
+             createIssueManually: false,
+             distractionFreeMode: false,
+             perPage: 10,
+             pagerDirection: 'last',
+             
+             
+             enableHotKey: true
+         })
+         gitalk.render('comment-container')</script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1"><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><figure class="media-left"><a class="image" href="/posts/2489357851.html"><img src="https://superdevresources.com/wp-content/uploads/2015/01/GIT-logo_300x300.jpg" alt="Git版本控制精简版"></a></figure><div class="media-content"><p class="date"><time dateTime="2021-10-14T11:58:36.998Z">2021-10-14</time></p><p class="title"><a href="/posts/2489357851.html">Git版本控制精简版</a></p><p class="categories"><a href="/categories/%E8%BD%AF%E4%BB%B6/">软件</a></p></div></article><article class="media"><figure class="media-left"><a class="image" href="/posts/3517918973.html"><img src="https://www.fatosmorina.com/wp-content/uploads/2017/06/vim.png" alt="Vim常用快捷操作"></a></figure><div class="media-content"><p class="date"><time dateTime="2021-10-14T11:58:36.998Z">2021-10-14</time></p><p class="title"><a href="/posts/3517918973.html">Vim常用快捷操作</a></p><p class="categories"><a href="/categories/%E8%BD%AF%E4%BB%B6/">软件</a></p></div></article><article class="media"><figure class="media-left"><a class="image" href="/posts/4059878826.html"><img src="http://cdn.zhangyanc.club/cdn/banner/banner-3.jpg" alt="python装饰器"></a></figure><div class="media-content"><p class="date"><time dateTime="2021-10-14T11:58:36.998Z">2021-10-14</time></p><p class="title"><a href="/posts/4059878826.html">python装饰器</a></p><p class="categories"><a href="/categories/%E7%BC%96%E7%A8%8B/">编程</a></p></div></article><article class="media"><figure class="media-left"><a class="image" href="/posts/1795835217.html"><img src="https://www.albertcoronado.com/wp-content/uploads/2016/06/redis_logo.png" alt="redis非关系型数据库知识点"></a></figure><div class="media-content"><p class="date"><time dateTime="2021-10-08T13:28:48.387Z">2021-10-08</time></p><p class="title"><a href="/posts/1795835217.html">redis非关系型数据库知识点</a></p><p class="categories"><a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></p></div></article><article class="media"><figure class="media-left"><a class="image" href="/posts/995647325.html"><img src="https://i.52112.com/icon/256/20161207/4100/217215.png" alt="mysql关系数据库知识点精简版"></a></figure><div class="media-content"><p class="date"><time dateTime="2021-10-08T13:28:48.367Z">2021-10-08</time></p><p class="title"><a href="/posts/995647325.html">mysql关系数据库知识点精简版</a></p><p class="categories"><a href="/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/">数据库</a></p></div></article></div></div><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#Git的特点"><span class="level-left"><span class="level-item">1</span><span class="level-item">Git的特点</span></span></a></li><li><a class="level is-mobile" href="#Git安装"><span class="level-left"><span class="level-item">2</span><span class="level-item">Git安装</span></span></a></li><li><a class="level is-mobile" href="#Git-使用前配置"><span class="level-left"><span class="level-item">3</span><span class="level-item">Git 使用前配置</span></span></a></li><li><a class="level is-mobile" href="#常用操作命令"><span class="level-left"><span class="level-item">4</span><span class="level-item">常用操作命令</span></span></a></li><li><a class="level is-mobile" href="#与Github关联方法"><span class="level-left"><span class="level-item">5</span><span class="level-item">与Github关联方法</span></span></a></li><li><a class="level is-mobile" href="#操作注意事项"><span class="level-left"><span class="level-item">6</span><span class="level-item">操作注意事项</span></span></a></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div><div class="column-right-shadow is-hidden-widescreen"></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img class="logo-img" src="/img/src/mylogo.png" alt="Bingeone博客园" height="28"><img class="logo-img-dark" src="/img/src/mylogo.png" alt="Bingeone博客园" height="28"></a><p class="is-size-7"><span>&copy; 2021 Bingeone</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a><br><span><span id="statistic-times">loading...</span><script>function createTime(time) {
+            var n = new Date(time);
+            now.setTime(now.getTime() + 250),
+                days = (now - n) / 1e3 / 60 / 60 / 24,
+                dnum = Math.floor(days),
+                hours = (now - n) / 1e3 / 60 / 60 - 24 * dnum,
+                hnum = Math.floor(hours),
+            1 == String(hnum).length && (hnum = "0" + hnum),
+                minutes = (now - n) / 1e3 / 60 - 1440 * dnum - 60 * hnum,
+                mnum = Math.floor(minutes),
+            1 == String(mnum).length && (mnum = "0" + mnum),
+                seconds = (now - n) / 1e3 - 86400 * dnum - 3600 * hnum - 60 * mnum,
+                snum = Math.round(seconds),
+            1 == String(snum).length && (snum = "0" + snum),
+                document.getElementById("statistic-times").innerHTML = "⭐本站自 <strong>"+time.split(" ")[0].replace(/\//g,".")+"</strong> 已坚守 <strong>" + dnum + "</strong> 天 <strong>" + hnum + "</strong> 小时 <strong>" + mnum + "</strong> 分 <strong>" + snum + "</strong> 秒！⭐";
+        }var now = new Date();setInterval("createTime('2021/08/01 00:00:00')", 250,"");</script></span><br><span><a href="http://www.baidu.com" target="_blank">琼ICP备000000号(测试)</a> - </span><span>⭐感谢 <strong><span id="busuanzi_value_site_uv">99+</span></strong> 小伙伴的 <strong><span id="busuanzi_value_site_pv">99+</span></strong> 次赏目！⭐</span></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Star me" href="https://github.com/Bingeone"><i class="iconfont icon-github"></i></a></p></div><div class="sideMusic"><link rel="stylesheet" href="/js/aplayer/APlayer.min.css"><script src="/js/aplayer/APlayer.min.js"></script><script src="/js/aplayer/Meting.min.js"></script><meting-js style="width: auto;height: 1000px;" server="netease" type="playlist" id="6861753000" theme="#2980b9" loop="all" autoplay="false" order="list" storageName="aplayer-setting" lrctype="0" list-max-height="200px" fixed="true"></meting-js></div></div></div></div></footer><script src="/js/jquery-3.4.1.min.js"></script><script src="https://cdnjs.loli.net/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script><script src="https://cdnjs.loli.net/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" defer></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><!--!--><script src="https://cdnjs.loli.net/ajax/libs/cookieconsent/3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: null,
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdnjs.loli.net/ajax/libs/lightgallery/1.6.8/js/lightgallery.min.js" defer></script><script src="https://cdnjs.loli.net/ajax/libs/justifiedGallery/3.7.0/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><script type="text/x-mathjax-config">MathJax.Hub.Config({
+             'HTML-CSS': {
+                 matchFontHeight: false
+             },
+             SVG: {
+                 matchFontHeight: false
+             },
+             CommonHTML: {
+                 matchFontHeight: false
+             },
+             tex2jax: {
+                 inlineMath: [
+                     ['$','$'],
+                     ['\\(','\\)']
+                 ]
+             }
+         });</script><script src="https://cdnjs.loli.net/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" defer></script><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script><script type="text/javascript" src="/js/night/universe.js"></script><script src="/js/click.js"></script><link rel="stylesheet" href="/js/aplayer/APlayer.min.css"><script type="text/javascript" src="/js/aplayer/APlayer.min.js"></script><script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=6119c76e49ea8f00167b1939&amp;product=sop" async="async"></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.js"></script><script type="text/javascript">var pjax = new Pjax({
+            elements: "a",//代表点击链接就更新
+            selectors: [  //代表要更新的节点
+                ".section",
+                "title"
+            ],
+            cache: true,
+            cacheBust:false
+        })
+
+        function loadLunbo(){
+            $.getScript("/js/zouma/lunbo.js", function () {});
+            } 
+    
+        function loadCxscroll(){
+            $.getScript("/js/jquery.cxscroll.min.js", function () {});
+            }      
+
+        function loadMathJax() { //加载mathjax
+            $.getScript("//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML", function () {
+                MathJax.Hub.Config({ tex2jax: { inlineMath: [['$', '$'], ['\(', '\)']] } });
+                var math = document.getElementsByClassName("entry-content")[0];
+                MathJax.Hub.Queue(["Typeset", MathJax.Hub, math]);
+            });
+        };
+
+        // 开始 PJAX 执行的函数
+        document.addEventListener('pjax:send', function () {
+        });
+        
+        // PJAX 完成之后执行的函数，可以和上面的重载放在一起
+        document.addEventListener('pjax:complete', function () {
+            $(".section").css({opacity:1});
+            if(false){
+                loadMathJax();
+            }
+            loadMainJs(jQuery, window.moment, window.ClipboardJS, window.IcarusThemeSettings);
+            loadBackTop();
+            loadLunbo();
+            loadCxscroll();
+        });</script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"react":{"opacity":0.7},"log":false});</script></body></html>

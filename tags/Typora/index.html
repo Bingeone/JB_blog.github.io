@@ -53,7 +53,7 @@
                 timer()
             })
         }
-        timer()</script></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2021-08-01T04:54:20.000Z" title="2021/8/1 下午12:54:20">2021-08-01</time>发表</span><span class="level-item"><time dateTime="2021-09-10T05:26:16.929Z" title="2021/9/10 下午1:26:16">2021-09-10</time>更新</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/posts/3133288005.html">Markdown基本使用</a></h1><div class="content"><h3 id="文章中图片排版格式"><a href="#文章中图片排版格式" class="headerlink" title="文章中图片排版格式"></a>文章中图片排版格式</h3><ul>
+        timer()</script></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2021-08-01T04:54:20.000Z" title="2021/8/1 下午12:54:20">2021-08-01</time>发表</span><span class="level-item"><time dateTime="2021-10-16T11:26:33.766Z" title="2021/10/16 下午7:26:33">2021-10-16</time>更新</span><script type="text/javascript" src="/js/busuanzi.mini.js"></script></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/posts/3133288005.html">Markdown基本使用</a></h1><div class="content"><h3 id="文章中图片排版格式"><a href="#文章中图片排版格式" class="headerlink" title="文章中图片排版格式"></a>文章中图片排版格式</h3><ul>
 <li>横向排列</li>
 </ul>
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;img-x&quot;</span>&gt;</span></span></span><br><span class="line">-----留空格-----</span><br><span class="line">![<span class="string">图片链接</span>](<span class="link">url</span>)</span><br><span class="line">-----留空格-----</span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
@@ -183,21 +183,10 @@
             cache: true,
             cacheBust:false
         })
-
-        function loadBusuanzi(){
-            $.getScript("/js/busuanzi.mini.js", function () {});
-            }
             
         function loadLunbo(){
             $.getScript("/js/zouma/lunbo.js", function () {});
             } 
-        function loadAplayer(){
-            $.getScript("/js/aplayer/APlayer.min.js", function () {});
-            } 
-    
-        //function loadCxscroll(){
-            //$.getScript("/js/jquery.cxscroll.min.js", function () {});
-           // }      
 
         function loadMathJax() { //加载mathjax
             $.getScript("//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML", function () {
@@ -214,13 +203,13 @@
         // PJAX 完成之后执行的函数，可以和上面的重载放在一起
         document.addEventListener('pjax:complete', function () {
             $(".section").css({opacity:1});
+            if(true){
+                $.getScript(function(){loadIssueData('ea77384cddc353829f2f','d21dd0f553bcf6d66e6dc36acea8838a75ec48cf','Bingeone','blog_gitalk_comments');});
+            }
             if(false){
                 loadMathJax();
             }
             loadMainJs(jQuery, window.moment, window.ClipboardJS, window.IcarusThemeSettings);
             loadBackTop();
-            loadBusuanzi;
-            loadAplayer;
             loadLunbo();
-            //loadCxscroll();
         });</script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"react":{"opacity":0.7},"log":false});</script></body></html>

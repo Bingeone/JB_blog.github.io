@@ -53,7 +53,7 @@
                 timer()
             })
         }
-        timer()</script></div><div class="card"><div class="card-image"><a class="image is-7by3" href="/posts/5655611541.html"><img class="fill" src="https://blog.surges.eu/wp-content/uploads/2020/12/20201229_ubuntu_screen_flickering.png" alt="Linux 基础知识"></a></div><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2021-08-11T08:45:25.000Z" title="2021/8/11 下午4:45:25">2021-08-11</time>发表</span><span class="level-item"><time dateTime="2021-09-12T04:31:15.682Z" title="2021/9/12 下午12:31:15">2021-09-12</time>更新</span></div><div class="top-icon"><i class="iconfont icon-top_icon_anno-copy"></i><link rel="stylesheet" href="/css/iconfont.css"></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/posts/5655611541.html">Linux 基础知识</a></h1><div class="content"><h2 id="ubuntu-使用技巧"><a href="#ubuntu-使用技巧" class="headerlink" title="ubuntu 使用技巧"></a>ubuntu 使用技巧</h2><ol>
+        timer()</script></div><div class="card"><div class="card-image"><a class="image is-7by3" href="/posts/5655611541.html"><img class="fill" src="https://blog.surges.eu/wp-content/uploads/2020/12/20201229_ubuntu_screen_flickering.png" alt="Linux 基础知识"></a></div><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2021-08-11T08:45:25.000Z" title="2021/8/11 下午4:45:25">2021-08-11</time>发表</span><span class="level-item"><time dateTime="2021-09-12T04:31:15.682Z" title="2021/9/12 下午12:31:15">2021-09-12</time>更新</span><script type="text/javascript" src="/js/busuanzi.mini.js"></script></div><div class="top-icon"><i class="iconfont icon-top_icon_anno-copy"></i><link rel="stylesheet" href="/css/iconfont.css"></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/posts/5655611541.html">Linux 基础知识</a></h1><div class="content"><h2 id="ubuntu-使用技巧"><a href="#ubuntu-使用技巧" class="headerlink" title="ubuntu 使用技巧"></a>ubuntu 使用技巧</h2><ol>
 <li>mkdir的技巧</li>
 </ol>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#创建 ～/a/b/c</span></span><br><span class="line">mkdir -p  ~/a/b/c/</span><br><span class="line"><span class="comment">#创建多个文件夹</span></span><br><span class="line">mkdir  a b c</span><br></pre></td></tr></table></figure>
@@ -183,21 +183,10 @@
             cache: true,
             cacheBust:false
         })
-
-        function loadBusuanzi(){
-            $.getScript("/js/busuanzi.mini.js", function () {});
-            }
             
         function loadLunbo(){
             $.getScript("/js/zouma/lunbo.js", function () {});
             } 
-        function loadAplayer(){
-            $.getScript("/js/aplayer/APlayer.min.js", function () {});
-            } 
-    
-        //function loadCxscroll(){
-            //$.getScript("/js/jquery.cxscroll.min.js", function () {});
-           // }      
 
         function loadMathJax() { //加载mathjax
             $.getScript("//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML", function () {
@@ -214,13 +203,13 @@
         // PJAX 完成之后执行的函数，可以和上面的重载放在一起
         document.addEventListener('pjax:complete', function () {
             $(".section").css({opacity:1});
+            if(true){
+                $.getScript(function(){loadIssueData('ea77384cddc353829f2f','d21dd0f553bcf6d66e6dc36acea8838a75ec48cf','Bingeone','blog_gitalk_comments');});
+            }
             if(false){
                 loadMathJax();
             }
             loadMainJs(jQuery, window.moment, window.ClipboardJS, window.IcarusThemeSettings);
             loadBackTop();
-            loadBusuanzi;
-            loadAplayer;
             loadLunbo();
-            //loadCxscroll();
         });</script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"react":{"opacity":0.7},"log":false});</script></body></html>

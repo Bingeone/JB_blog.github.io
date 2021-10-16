@@ -114,21 +114,10 @@ function showHitokoto (event) {
             cache: true,
             cacheBust:false
         })
-
-        function loadBusuanzi(){
-            $.getScript("/js/busuanzi.mini.js", function () {});
-            }
             
         function loadLunbo(){
             $.getScript("/js/zouma/lunbo.js", function () {});
             } 
-        function loadAplayer(){
-            $.getScript("/js/aplayer/APlayer.min.js", function () {});
-            } 
-    
-        //function loadCxscroll(){
-            //$.getScript("/js/jquery.cxscroll.min.js", function () {});
-           // }      
 
         function loadMathJax() { //加载mathjax
             $.getScript("//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML", function () {
@@ -146,12 +135,12 @@ function showHitokoto (event) {
         document.addEventListener('pjax:complete', function () {
             $(".section").css({opacity:1});
             if(false){
+                $.getScript(function(){loadIssueData('undefined','undefined','undefined','undefined');});
+            }
+            if(false){
                 loadMathJax();
             }
             loadMainJs(jQuery, window.moment, window.ClipboardJS, window.IcarusThemeSettings);
             loadBackTop();
-            loadBusuanzi;
-            loadAplayer;
             loadLunbo();
-            //loadCxscroll();
         });</script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"react":{"opacity":0.7},"log":false});</script></body></html>

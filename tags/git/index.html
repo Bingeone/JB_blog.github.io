@@ -53,7 +53,7 @@
                 timer()
             })
         }
-        timer()</script></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2021-10-14T11:58:36.998Z" title="2021/10/14 下午7:58:36">2021-10-14</time>发表</span><span class="level-item"><time dateTime="2021-10-14T12:36:35.323Z" title="2021/10/14 下午8:36:35">2021-10-14</time>更新</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/posts/2489357851.html">Git版本控制精简版</a></h1><div class="content"><p><a target="_blank" rel="noopener" href="https://git-scm.com/">Git</a>是一种强大高效VCS(version control system版本控制系统)，能够实现项目文件过程的实时监控。git使用方式与其他版本控制系统（如CVS、Subversion、Perfoce）类似，但前后者之间区别的：git保存处理数据，对当时项目状态采用创建一种快照的索引方式；后者处理存储信息是基于文件随时间累积差异。</p>
+        timer()</script></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2021-10-14T11:58:36.998Z" title="2021/10/14 下午7:58:36">2021-10-14</time>发表</span><span class="level-item"><time dateTime="2021-10-14T12:36:35.323Z" title="2021/10/14 下午8:36:35">2021-10-14</time>更新</span><script type="text/javascript" src="/js/busuanzi.mini.js"></script></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/posts/2489357851.html">Git版本控制精简版</a></h1><div class="content"><p><a target="_blank" rel="noopener" href="https://git-scm.com/">Git</a>是一种强大高效VCS(version control system版本控制系统)，能够实现项目文件过程的实时监控。git使用方式与其他版本控制系统（如CVS、Subversion、Perfoce）类似，但前后者之间区别的：git保存处理数据，对当时项目状态采用创建一种快照的索引方式；后者处理存储信息是基于文件随时间累积差异。</p>
 <h3 id="Git的特点"><a href="#Git的特点" class="headerlink" title="Git的特点"></a>Git的特点</h3><ul>
 <li>直接记录快照，而非差异比较</li>
 <li>近乎所有操作都是本地执行</li>
@@ -202,21 +202,10 @@
             cache: true,
             cacheBust:false
         })
-
-        function loadBusuanzi(){
-            $.getScript("/js/busuanzi.mini.js", function () {});
-            }
             
         function loadLunbo(){
             $.getScript("/js/zouma/lunbo.js", function () {});
             } 
-        function loadAplayer(){
-            $.getScript("/js/aplayer/APlayer.min.js", function () {});
-            } 
-    
-        //function loadCxscroll(){
-            //$.getScript("/js/jquery.cxscroll.min.js", function () {});
-           // }      
 
         function loadMathJax() { //加载mathjax
             $.getScript("//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML", function () {
@@ -233,13 +222,13 @@
         // PJAX 完成之后执行的函数，可以和上面的重载放在一起
         document.addEventListener('pjax:complete', function () {
             $(".section").css({opacity:1});
+            if(true){
+                $.getScript(function(){loadIssueData('ea77384cddc353829f2f','d21dd0f553bcf6d66e6dc36acea8838a75ec48cf','Bingeone','blog_gitalk_comments');});
+            }
             if(false){
                 loadMathJax();
             }
             loadMainJs(jQuery, window.moment, window.ClipboardJS, window.IcarusThemeSettings);
             loadBackTop();
-            loadBusuanzi;
-            loadAplayer;
             loadLunbo();
-            //loadCxscroll();
         });</script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"react":{"opacity":0.7},"log":false});</script></body></html>

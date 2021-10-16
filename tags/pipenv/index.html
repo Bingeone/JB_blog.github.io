@@ -53,7 +53,7 @@
                 timer()
             })
         }
-        timer()</script></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2021-09-12T12:28:13.000Z" title="2021/9/12 下午8:28:13">2021-09-12</time>发表</span><span class="level-item"><time dateTime="2021-09-13T13:37:55.849Z" title="2021/9/13 下午9:37:55">2021-09-13</time>更新</span></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/posts/519438566.html">python虚拟环境的搭建方式</a></h1><div class="content"><p>在Python搭建项目常常会在一个封闭而独立的虚拟环境中操作，以便于后续项目的打包迁移到服务器等其它设备中加载运行。当前Python虚拟环境搭建常用工具有<strong>virtualenv</strong>/ <strong>venv</strong>/<strong>pipenv</strong>。</p>
+        timer()</script></div><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2021-09-12T12:28:13.000Z" title="2021/9/12 下午8:28:13">2021-09-12</time>发表</span><span class="level-item"><time dateTime="2021-09-13T13:37:55.849Z" title="2021/9/13 下午9:37:55">2021-09-13</time>更新</span><script type="text/javascript" src="/js/busuanzi.mini.js"></script></div></div><h1 class="title is-3 is-size-4-mobile"><a class="link-muted" href="/posts/519438566.html">python虚拟环境的搭建方式</a></h1><div class="content"><p>在Python搭建项目常常会在一个封闭而独立的虚拟环境中操作，以便于后续项目的打包迁移到服务器等其它设备中加载运行。当前Python虚拟环境搭建常用工具有<strong>virtualenv</strong>/ <strong>venv</strong>/<strong>pipenv</strong>。</p>
 <blockquote>
 <p>virtualenv和venv使用方式相似，依赖模块环境在requirements.txt，需要手动更新内容</p>
 <p>pipenv搭建环境会生成Pipfile和Pipfile.lock 两个特殊文件，项目所有模块环境包信息都会自动实时更新，项目迁移只需要将项目源码和这两个文件，在新的环境中（pipenv install –dev）一键安装其中的依赖包</p>
@@ -179,21 +179,10 @@
             cache: true,
             cacheBust:false
         })
-
-        function loadBusuanzi(){
-            $.getScript("/js/busuanzi.mini.js", function () {});
-            }
             
         function loadLunbo(){
             $.getScript("/js/zouma/lunbo.js", function () {});
             } 
-        function loadAplayer(){
-            $.getScript("/js/aplayer/APlayer.min.js", function () {});
-            } 
-    
-        //function loadCxscroll(){
-            //$.getScript("/js/jquery.cxscroll.min.js", function () {});
-           // }      
 
         function loadMathJax() { //加载mathjax
             $.getScript("//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML", function () {
@@ -210,13 +199,13 @@
         // PJAX 完成之后执行的函数，可以和上面的重载放在一起
         document.addEventListener('pjax:complete', function () {
             $(".section").css({opacity:1});
+            if(true){
+                $.getScript(function(){loadIssueData('ea77384cddc353829f2f','d21dd0f553bcf6d66e6dc36acea8838a75ec48cf','Bingeone','blog_gitalk_comments');});
+            }
             if(false){
                 loadMathJax();
             }
             loadMainJs(jQuery, window.moment, window.ClipboardJS, window.IcarusThemeSettings);
             loadBackTop();
-            loadBusuanzi;
-            loadAplayer;
             loadLunbo();
-            //loadCxscroll();
         });</script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"react":{"opacity":0.7},"log":false});</script></body></html>

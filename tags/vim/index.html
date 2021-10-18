@@ -207,9 +207,6 @@
         // PJAX 完成之后执行的函数，可以和上面的重载放在一起
         document.addEventListener('pjax:complete', function () {
             $(".section").css({opacity:1});
-            if(true){
-                $.getScript(function(){loadIssueData('ea77384cddc353829f2f','d21dd0f553bcf6d66e6dc36acea8838a75ec48cf','Bingeone','blog_gitalk_comments');});
-            }
             if(false){
                 loadMathJax();
             }

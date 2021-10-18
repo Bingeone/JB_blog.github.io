@@ -135,9 +135,6 @@ function showHitokoto (event) {
         document.addEventListener('pjax:complete', function () {
             $(".section").css({opacity:1});
             if(false){
-                $.getScript(function(){loadIssueData('undefined','undefined','undefined','undefined');});
-            }
-            if(false){
                 loadMathJax();
             }
             loadMainJs(jQuery, window.moment, window.ClipboardJS, window.IcarusThemeSettings);

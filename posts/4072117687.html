@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>gcc编译和Cmake使用 - Bingeone博客园</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Bingeone博客园"><meta name="msapplication-TileImage" content="/img/src/logo.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Bingeone博客园"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="GCC编译器 使用gcc编译C代码  使用g++ 编译C++代码  man gcc&amp;#x2F;g++  查看使用手册  编译过程  预处理-Pre-Proccessing          # .i文件  #-E 选项指示编译器仅对输入文件进行预处理 g++ -E test.cpp -o test.i        &amp;#x2F;&amp;#x2F; .i文件   编译-Compiling           #.s文件  #-s 编译"><meta property="og:type" content="blog"><meta property="og:title" content="gcc编译和Cmake使用"><meta property="og:url" content="https://bingeone.top/posts/4072117687.html"><meta property="og:site_name" content="Bingeone博客园"><meta property="og:description" content="GCC编译器 使用gcc编译C代码  使用g++ 编译C++代码  man gcc&amp;#x2F;g++  查看使用手册  编译过程  预处理-Pre-Proccessing          # .i文件  #-E 选项指示编译器仅对输入文件进行预处理 g++ -E test.cpp -o test.i        &amp;#x2F;&amp;#x2F; .i文件   编译-Compiling           #.s文件  #-s 编译"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=46274188,117569977&amp;fm=26&amp;gp=0.jpg"><meta property="article:published_time" content="2021-12-11T03:55:03.163Z"><meta property="article:modified_time" content="2021-12-11T04:31:49.669Z"><meta property="article:author" content="Bingeone"><meta property="article:tag" content="Cmake"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=46274188,117569977&amp;fm=26&amp;gp=0.jpg"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://bingeone.top/posts/4072117687.html"},"headline":"gcc编译和Cmake使用","image":["https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=46274188,117569977&fm=26&gp=0.jpg"],"datePublished":"2021-12-11T03:55:03.163Z","dateModified":"2021-12-11T04:31:49.669Z","author":{"@type":"Person","name":"Bingeone"},"publisher":{"@type":"Organization","name":"Bingeone博客园","logo":{"@type":"ImageObject","url":{"light":"/img/src/mylogo.png","dark":"/img/src/mylogo.png"}}},"description":"GCC编译器 使用gcc编译C代码  使用g++ 编译C++代码  man gcc&#x2F;g++  查看使用手册  编译过程  预处理-Pre-Proccessing          # .i文件  #-E 选项指示编译器仅对输入文件进行预处理 g++ -E test.cpp -o test.i        &#x2F;&#x2F; .i文件   编译-Compiling           #.s文件  #-s 编译"}</script><link rel="canonical" href="https://bingeone.top/posts/4072117687.html"><link rel="icon" href="/img/src/logo.png"><link rel="stylesheet" href="/css/font/fontawesome/css2/all.min.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css"><link rel="stylesheet" href="/css/font/font.css"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/cookieconsent/3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/justifiedGallery/3.7.0/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><script src="https://cdnjs.loli.net/ajax/libs/pace/1.0.2/pace.min.js"></script><!--!--><!--!--><script src="https://zz.bdstatic.com/linksubmit/push.js" defer></script><meta name="generator" content="Hexo 5.4.0"></head><body class="is-3-column"><script type="text/javascript" src="/js/night/night.js"></script><canvas id="universe"></canvas><nav class="navbar navbar-main is-sticky"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img class="logo-img" src="/img/src/mylogo.png" alt="Bingeone博客园" height="28"><img class="logo-img-dark" src="/img/src/mylogo.png" alt="Bingeone博客园" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">首页</a><a class="navbar-item" href="/archives">归档</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a><a class="navbar-item" href="/bookmark">书签</a><a class="navbar-item" href="/talking">说说</a><a class="navbar-item" href="/friends">友链</a><a class="navbar-item" href="/about">关于</a></div><div class="navbar-end"><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item night" id="night-nav" title="Night Mode" href="javascript:;"><i class="fas fa-moon" id="night-icon" style="color:#d4237a"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><link rel="stylesheet" href="/css/iconfont.css"><i class="iconfont icon-sousuo3"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2021-12-11T03:55:03.163Z" title="2021/12/11 上午11:55:03">2021-12-11</time>发表</span><span class="level-item"><time dateTime="2021-12-11T04:31:49.669Z" title="2021/12/11 下午12:31:49">2021-12-11</time>更新</span><span class="level-item" id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv">0</span>次访问</span><script type="text/javascript" src="/js/busuanzi.mini.js"></script></div></div><h1 class="title is-3 is-size-4-mobile">gcc编译和Cmake使用</h1><div class="content"><h3 id="GCC编译器"><a href="#GCC编译器" class="headerlink" title="GCC编译器"></a>GCC编译器</h3><ul>
+<li><p>使用gcc编译C代码</p>
+</li>
+<li><p>使用g++ 编译C++代码</p>
+</li>
+<li><p>man gcc/g++  查看使用手册</p>
+</li>
+<li><p>编译过程</p>
+<ol>
+<li><p><strong>预处理-Pre-Proccessing          # .i文件</strong></p>
+<blockquote>
+<p>#-E 选项指示编译器仅对输入文件进行预处理</p>
+<p>g++ -E test.cpp -o test.i        // .i文件</p>
+</blockquote>
+</li>
+<li><p><strong>编译-Compiling           #.s文件</strong></p>
+<blockquote>
+<p>#-s 编译选项告诉 g++ 在为C++ 代码产生了汇编语言文件后停止编译</p>
+<p>#g++ 产生的汇编语言文件的缺省扩展名是 .s</p>
+<p>g++ -S test.i -o test.s</p>
+</blockquote>
+</li>
+<li><p><strong>汇编-Assembling        # .o文件</strong></p>
+<blockquote>
+<p>#-c  选项告诉 g++ 仅把源代码编译为机器语言的目标代码</p>
+<p>g++ -c test.s -o test.o</p>
+</blockquote>
+</li>
+<li><p><strong>链接-Linking       #bin文件</strong></p>
+<blockquote>
+<p>#-o 编译选项来为将产生的可执行文件用指定文件名==(单一文件编译)==</p>
+<p>g++ test.o -o test</p>
+<p>#==多目录多文件下编译实例如下：==</p>
+<p>g++ main.cpp src/swap.cpp -Iinclude -o main    —– 编译文件main.cpp swap.cpp ;        头文件(引用的 .h文件)indclude     可执行文件 main</p>
+</blockquote>
+ <span id="more"></span></li>
+</ol>
+</li>
+<li><p>g++重要的编译参数</p>
+<ul>
+<li><p>-g    编译带调试信息的可执行文件   </p>
+<blockquote>
+<p>#带有调试的文件</p>
+<p>g++ -g text.cpp -o test</p>
+</blockquote>
+</li>
+<li><p>-O[数字]      优化源代码</p>
+<blockquote>
+<p>##优化即  例如省略代码中从未使用过的变量，直接将变量表达式用结果值代替等等，这些操作会缩减目标文件的所含的代码量，提高最终生成的可执行文件的运行效率。</p>
+<p>g++  test.cpp -O2 -o test</p>
+</blockquote>
+</li>
+<li><p>-I       指定头文件搜索目录</p>
+<blockquote>
+<p>g++  -I/myinclude(路径) test.cpp</p>
+</blockquote>
+</li>
+<li><p>-Wall   打印警告信息</p>
+<blockquote>
+<p>#打印出gcc提供的警告信息</p>
+<p>g++ -Wall test.cpp </p>
+</blockquote>
+</li>
+<li><p>-w   关闭警告信息</p>
+<blockquote>
+<p>g++ -w test.cpp</p>
+</blockquote>
+</li>
+<li><p>-o    输出文件头名</p>
+<blockquote>
+<p>g++ test.cpp -o test</p>
+</blockquote>
+</li>
+<li><p>-std=c++11   设置编译标准</p>
+<blockquote>
+<p>g++  -std=c++11 test.cpp </p>
+</blockquote>
+</li>
+<li><p>案例：</p>
+</li>
+</ul>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#示例:</span></span><br><span class="line">g++ main.cpp src/Gun.cpp src/Soldier.cpp -Iinclude -o myexe -Wall -g -O2		//输出 警告 调试 优化代码</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="CMake-简要使用"><a href="#CMake-简要使用" class="headerlink" title="CMake 简要使用"></a>CMake 简要使用</h3><h4 id="编译流程"><a href="#编译流程" class="headerlink" title="编译流程"></a><strong>编译流程</strong></h4><p>==在linux平台上CMake构建 C/C++工程的流程==: </p>
+<ul>
+<li>编写CMakeListstxt</li>
+<li>执行命令cmake PATH 生成Makefile(PATH 是顶层CMakeLists.txt 所在目录)</li>
+<li>执行命令make进行编译</li>
+</ul>
+<h4 id="两种构建方式"><a href="#两种构建方式" class="headerlink" title="两种构建方式"></a>两种构建方式</h4><ul>
+<li><p>内部构建(in-source build): 会在同级目录下产生大量的中间文件，使工程文件杂乱无章</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 内部构建</span></span><br><span class="line"><span class="comment"># 在当前工程文件目录下，编译本目录的CMakeists.txt，生成Makefile和其他文件</span></span><br><span class="line">cmake .</span><br><span class="line"><span class="comment"># 执行make命令，生成target</span></span><br><span class="line">make</span><br></pre></td></tr></table></figure>
+
+<p>  ==<strong>简单的CMakeLists.txt编写如下：</strong>==</p>
+  <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cmake最低版本要求</span></span><br><span class="line"><span class="keyword">cmake_minimum_required</span>(VERSION <span class="number">3.0</span>)</span><br><span class="line"><span class="comment"># 项目名称</span></span><br><span class="line"><span class="keyword">project</span>(HELLOWORLD)</span><br><span class="line"><span class="comment"># 编译.cpp文件生成可执行文件（如下：helloWorld_cmake）</span></span><br><span class="line"><span class="keyword">add_executable</span>(helloWorld_cmake helloworld.cpp)</span><br></pre></td></tr></table></figure>
+
+</li>
+<li><p>外部构建(out-of -source build): 编译输出文件与工程文件不再同一目录下==(推荐使用)==</p>
+  <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">## 外部构建</span></span><br><span class="line"><span class="comment"># 1.在当前目录下，创建一个build文件夹</span></span><br><span class="line">mkdir build</span><br><span class="line"><span class="comment"># 2.进入到build文件夹中</span></span><br><span class="line"><span class="built_in">cd</span> build</span><br><span class="line"><span class="comment"># 3.编译上级目录的CMakeists.txt，生成Makefile和其他文件</span></span><br><span class="line">cmake ..</span><br><span class="line"><span class="comment"># 4.执行make命令，生成target</span></span><br><span class="line">make</span><br></pre></td></tr></table></figure>
+
+<p>  ==<strong>复杂多目录下构建CMakeLists.txt编写如下：</strong>==</p>
+  <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># cmake最低版本要求</span></span><br><span class="line"><span class="keyword">cmake_minimum_required</span>(VERSION <span class="number">3.0</span>)</span><br><span class="line"><span class="comment"># 项目名称</span></span><br><span class="line"><span class="keyword">project</span>(SWAP)</span><br><span class="line"><span class="comment"># 项目引用的头文件(.h文件)</span></span><br><span class="line"><span class="keyword">include_directories</span>(<span class="keyword">include</span>)</span><br><span class="line"><span class="comment"># 编译多目录使用的.cpp文件生成可执行文件（如下：main_cmake）</span></span><br><span class="line"><span class="keyword">add_executable</span>(main_cmake main.cpp src/swap.cpp )</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="CMake编写CMakeLists-txt"><a href="#CMake编写CMakeLists-txt" class="headerlink" title="CMake编写CMakeLists.txt"></a>CMake编写CMakeLists.txt</h4><h5 id="语法及注意事项"><a href="#语法及注意事项" class="headerlink" title="语法及注意事项"></a>语法及注意事项</h5><ul>
+<li><p>基本语法格式：指令(参数1 参数2)</p>
+<ul>
+<li>参数使用==<strong>括弧</strong>==括起</li>
+<li>参数之间使用==<strong>空格</strong>==或==<strong>分号</strong>==分开</li>
+</ul>
+</li>
+<li><p>指令不分大小写</p>
+  <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 添加到头文件搜索路径</span></span><br><span class="line"><span class="keyword">include_directories</span>(<span class="keyword">include</span>)</span><br><span class="line"><span class="keyword">INCLUDE_DIRECTORIES</span>(<span class="keyword">include</span>)</span><br></pre></td></tr></table></figure></li>
+<li><p>变量是大小写相关的，使用**${}<strong>方式</strong>取值<strong>。但在</strong>if**语句中是直接使用变量名</p>
+  <figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 设置一个变量HELLO，值是hello.cpp</span></span><br><span class="line"><span class="keyword">set</span>(HELLO hello.cpp)  </span><br><span class="line"><span class="keyword">add_executable</span>(hello main.cpp <span class="variable">$&#123;HELLO&#125;</span>)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h5 id="常用变量"><a href="#常用变量" class="headerlink" title="常用变量"></a>常用变量</h5><p>==cmake_c_flags==：gcc编译选项<br>==cmake_cxx_flags==：g++编译选项</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 在cmake_cxx_flags编译选项后追加-std=c++14</span></span><br><span class="line"><span class="keyword">set</span>(cmake_cxx_flags <span class="string">&quot;$&#123;cmake_cxx_flags&#125; -std=c++14&quot;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>==cmake_build_type==：编译类型(Debug, Release)</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 设定编译类型为debug，因为在调试时需要选择debug</span></span><br><span class="line"><span class="keyword">set</span>(cmake_build_type Debug)</span><br><span class="line"><span class="comment"># 设定编译类型为release，因为在发布时需要选择release</span></span><br><span class="line"><span class="keyword">set</span>(cmake_build_type release)</span><br></pre></td></tr></table></figure>
+
+<p>==executable_output_path==：可执行文件输出的存放路径</p>
+<p>==library_output_path==：库文件输出的存放路径</p>
+<p>​    </p>
+<h5 id="重要指令"><a href="#重要指令" class="headerlink" title="重要指令"></a>重要指令</h5><p>==cmake_minimum_required==：指定CMake的最小版本要求<br>语法：cmake_minimum_required(VERSION 版本号 [FATAL_ERROR])</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># CMake最小版本要求为3.0</span></span><br><span class="line"><span class="keyword">cmake_minimum_required</span>(VERSION <span class="number">3.0</span>)</span><br></pre></td></tr></table></figure>
+
+<p>==project==：定义工程名称，并可指定工程支持的语言<br>语法：project(工程名称 [CXX] [C] [java])</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 指定工程名为HELLOWORLD</span></span><br><span class="line"><span class="keyword">project</span>(HELLOWORLD)</span><br></pre></td></tr></table></figure>
+
+<p>==set==：显式的定义变量<br>语法：set(变量名 [变量值] [CACHE TYPE DOCSTRING [FORCE]])</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 定义SRC变量，其值为main.cpp hello.cpp</span></span><br><span class="line"><span class="keyword">set</span>(SRC sayhello.cpp hello.cpp)</span><br></pre></td></tr></table></figure>
+
+<p>==include_directories==：向工程添加多个特定的头文件搜索路径，相当于指定g++编译器的-I参数<br>语法：include_directories([AFTER|BEFORE][SYSTEM] dir1 dir2 …)</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将/usr/include/myincludefolder 和 ./include 添加到头文件搜索路径</span></span><br><span class="line"><span class="keyword">include_directories</span>(/usr/<span class="keyword">include</span>/myincludefolder ./<span class="keyword">include</span>)</span><br></pre></td></tr></table></figure>
+
+<p>==link_directories==：向工程添加多个特定的库文件搜索路径，相当于指定g++编译器的-L参数<br>语法：link_directories(dir1 dir2 …)</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将/usr/lib/mylibfolder 和 ./lib 添加到库文件搜索路径</span></span><br><span class="line"><span class="keyword">link_directories</span>(/usr/lib/mylibfolder ./lib)</span><br></pre></td></tr></table></figure>
+
+<p>==add_library==：生成库文件<br>语法：add_library(库名 [SHARED|STATIC|MODULE] [EXCLUDE_FROM_ALL] source1 source2 .. sourceN)</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 通过变量 SRC 生成 libhello.so 共享库</span></span><br><span class="line"><span class="comment"># SHARED代表动态库，STATIC代表静态库</span></span><br><span class="line"><span class="keyword">add_library</span>(hello SHARED <span class="variable">$&#123;SRC&#125;</span>)</span><br></pre></td></tr></table></figure>
+
+<p>==add_compile_options==：添加编译参数<br>语法：add_compile_options(编译参数)</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 添加编译参数 -wall -std=c++11</span></span><br><span class="line"><span class="keyword">add_compile_options</span>(-wall -std=c++<span class="number">11</span> -o2)</span><br></pre></td></tr></table></figure>
+
+<p>==add_executable==：生成可执行文件<br>语法：add_executable(exe文件名 source1 source2 .. sourceN)</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 编译main.cpp生成可执行文件main</span></span><br><span class="line"><span class="keyword">add_executable</span>(main main.cpp)</span><br></pre></td></tr></table></figure>
+
+<p>==target_link_libraries==：为target添加需要链接的共享库，相当于指定g++编译器-l参数<br>语法：target_link_libraries(target library1&lt;debug|optimized&gt; library2…)</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 将hello动态库文件链接到可执行文件main</span></span><br><span class="line"><span class="keyword">target_link_libraries</span>(main hello)</span><br></pre></td></tr></table></figure>
+
+<p>==add_subdirectory==：向当前工程添加存放源文件的子目录，并可以指定中间二进制和目标二进制存放的位置<br>语法：add_subdirectory(source_dir [binary_dir] [EXCLUDE_FROM_ALL])</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 添加src子目录，src中需要有一个CMakeLists.txt</span></span><br><span class="line"><span class="keyword">add_subdirectory</span>(src)</span><br></pre></td></tr></table></figure>
+
+<p>==aux_source_directory==：发现一个目录下所有的源代码文件并将列表存储在一个变量中，这个指令临时被用来自动构建源文件列表<br>语法：aux_source_directory(文件夹路径 变量名)</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 定义SRC变量，其值为当前目录下所有的源代码文件</span></span><br><span class="line"><span class="keyword">aux_source_directory</span>(. SRC)</span><br><span class="line"><span class="comment"># 编译SRC变量所代表的源代码文件，生成main可执行文件</span></span><br><span class="line"><span class="keyword">add_executable</span>(main <span class="variable">$&#123;SRC&#125;</span>)</span><br></pre></td></tr></table></figure>
+
+<p><strong>参考资料</strong>：<a target="_blank" rel="noopener" href="http://www.wang-hj.cn/?p=2629">CMake 资料</a></p>
+<h5 id="Vscode-调试-C-代码"><a href="#Vscode-调试-C-代码" class="headerlink" title="Vscode 调试 C++代码"></a>Vscode 调试 C++代码</h5><ul>
+<li>调试代码一般操作流程(==前提配置好launch.json文件==)<ul>
+<li>在主程序main.cpp文件打断点</li>
+<li>按F5，进入并命中断点位置</li>
+<li>F11，单步执行（执行代码行所指向所有文件）</li>
+<li>F10，单步并跳过执行（略过代码行所指向所有文件）</li>
+<li>执行完程序，按F5退出调试</li>
+</ul>
+</li>
+</ul>
+<p>​    ==(launch.json 和 tasks.json 文件配置)—linux/ubuntu系统==</p>
+<ul>
+<li>launch.json 配置</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="comment">// Use IntelliSense to learn about possible attributes.</span></span><br><span class="line">    <span class="comment">// Hover to view descriptions of existing attributes.</span></span><br><span class="line">    <span class="comment">// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387</span></span><br><span class="line">    <span class="string">&quot;version&quot;</span>: <span class="string">&quot;0.2.0&quot;</span>,</span><br><span class="line">    <span class="string">&quot;configurations&quot;</span>: [</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="string">&quot;name&quot;</span>: <span class="string">&quot;g++ - 生成和调试活动文件&quot;</span>,</span><br><span class="line">            <span class="string">&quot;type&quot;</span>: <span class="string">&quot;cppdbg&quot;</span>,</span><br><span class="line">            <span class="string">&quot;request&quot;</span>: <span class="string">&quot;launch&quot;</span>,</span><br><span class="line">            <span class="string">&quot;program&quot;</span>: <span class="string">&quot;$&#123;workspaceFolder&#125;/build/main_cmake&quot;</span>,</span><br><span class="line">            <span class="string">&quot;args&quot;</span>: [],</span><br><span class="line">            <span class="string">&quot;stopAtEntry&quot;</span>: <span class="literal">false</span>,</span><br><span class="line">            <span class="string">&quot;cwd&quot;</span>: <span class="string">&quot;$&#123;workspaceFolder&#125;&quot;</span>,     </span><br><span class="line">            <span class="string">&quot;environment&quot;</span>: [],</span><br><span class="line">            <span class="string">&quot;externalConsole&quot;</span>: <span class="literal">false</span>,</span><br><span class="line">            <span class="string">&quot;MIMode&quot;</span>: <span class="string">&quot;gdb&quot;</span>,</span><br><span class="line">            <span class="string">&quot;setupCommands&quot;</span>: [</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="string">&quot;description&quot;</span>: <span class="string">&quot;为 gdb 启用整齐打印&quot;</span>,</span><br><span class="line">                    <span class="string">&quot;text&quot;</span>: <span class="string">&quot;-enable-pretty-printing&quot;</span>,</span><br><span class="line">                    <span class="string">&quot;ignoreFailures&quot;</span>: <span class="literal">true</span></span><br><span class="line">                &#125;</span><br><span class="line">            ],</span><br><span class="line">            <span class="string">&quot;preLaunchTask&quot;</span>: <span class="string">&quot;Build&quot;</span>,   <span class="comment">//此处直接调用tasks任务执行，省略 在终端执行（cmake ..) 和 (make)两步命令</span></span><br><span class="line">            <span class="string">&quot;miDebuggerPath&quot;</span>: <span class="string">&quot;/usr/bin/gdb&quot;</span></span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>tasks.json 配置—作用：实现自动化调试，省去代码修改在编译过程</li>
+</ul>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">	<span class="string">&quot;version&quot;</span>: <span class="string">&quot;2.0.0&quot;</span>,		<span class="comment">//声明最低cmake版本</span></span><br><span class="line">	<span class="string">&quot;options&quot;</span>: &#123;</span><br><span class="line">		<span class="string">&quot;cwd&quot;</span>: <span class="string">&quot;$&#123;workspaceFolder&#125;/build&quot;</span>    <span class="comment">//需要进入到我们执行build任务的文件夹中</span></span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="string">&quot;tasks&quot;</span>: [    <span class="comment">//tasks包含三个小任务</span></span><br><span class="line">		&#123;</span><br><span class="line">			<span class="string">&quot;type&quot;</span>: <span class="string">&quot;shell&quot;</span>,</span><br><span class="line">			<span class="string">&quot;label&quot;</span>: <span class="string">&quot;cmake&quot;</span>,    <span class="comment">//第一个任务的名字叫cmake</span></span><br><span class="line">			<span class="string">&quot;command&quot;</span>: <span class="string">&quot;cmake&quot;</span>,    <span class="comment">//它要执行的命令是cmake</span></span><br><span class="line">			<span class="string">&quot;args&quot;</span>: [</span><br><span class="line">				<span class="string">&quot;..&quot;</span>    <span class="comment">//参数是..</span></span><br><span class="line">			]</span><br><span class="line">		&#125;,</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="string">&quot;label&quot;</span>: <span class="string">&quot;make&quot;</span>,    <span class="comment">//第二个任务的名字叫make</span></span><br><span class="line">			<span class="string">&quot;group&quot;</span>: &#123;</span><br><span class="line">				<span class="string">&quot;kind&quot;</span>: <span class="string">&quot;build&quot;</span>,</span><br><span class="line">				<span class="string">&quot;isDefault&quot;</span>: <span class="literal">true</span></span><br><span class="line">			&#125;,</span><br><span class="line">			<span class="string">&quot;command&quot;</span>: <span class="string">&quot;make&quot;</span>,    <span class="comment">//它要执行的命令是make</span></span><br><span class="line">			<span class="string">&quot;args&quot;</span>: [</span><br><span class="line">				</span><br><span class="line">			]</span><br><span class="line">		&#125;,</span><br><span class="line">		&#123;</span><br><span class="line">			<span class="string">&quot;label&quot;</span>: <span class="string">&quot;Build&quot;</span>,    <span class="comment">//第三个任务的名字叫Build</span></span><br><span class="line">			<span class="string">&quot;dependsOrder&quot;</span>: <span class="string">&quot;sequence&quot;</span>,    <span class="comment">//顺序执行依赖项</span></span><br><span class="line">			<span class="string">&quot;dependsOn&quot;</span>:[    <span class="comment">//依赖的两个项为cmake和make</span></span><br><span class="line">				<span class="string">&quot;cmake&quot;</span>,    <span class="comment">//即第一个任务的label</span></span><br><span class="line">				<span class="string">&quot;make&quot;</span>      <span class="comment">//即第二个任务的label</span></span><br><span class="line">			]</span><br><span class="line">		&#125;</span><br><span class="line">	]</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+</div><hr><div class="article-licensing box"><div class="licensing-title"><p>gcc编译和Cmake使用</p><p><a href="https://bingeone.top/posts/4072117687.html">https://bingeone.top/posts/4072117687.html</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>Bingeone</p></div></div><div class="level-item is-narrow"><div><h6>发布</h6><p>2021-12-11</p></div></div><div class="level-item is-narrow"><div><h6>更新</h6><p>2021-12-11</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><link rel="stylesheet" href="/css/iconfont.css"><div class="sharethis-inline-share-buttons"></div><script src="https://platform-api.sharethis.com/js/sharethis.js#property=6119c76e49ea8f00167b1939&amp;product=sop" defer></script></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/posts/3150049846.html"><i class="level-item fas fa-chevron-left"></i><span class="level-item">Vscode基础使用文档</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/posts/2489357851.html"><span class="level-item">Git版本控制精简版</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><script src="https://utteranc.es/client.js" repo="Bingeone/blog_comment" issue-term="pathname" label="some-issue-label" theme="boxy-light" crossorigin="anonymous" async></script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1"><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><figure class="media-left"><a class="image" href="/posts/1503359168.html"><img src="https://3wa.fr/wp-content/uploads/2020/04/logo-css.png" alt="CSS基础"></a></figure><div class="media-content"><p class="date"><time dateTime="2021-12-11T03:55:03.167Z">2021-12-11</time></p><p class="title"><a href="/posts/1503359168.html">CSS基础</a></p><p class="categories"><a href="/categories/%E7%BC%96%E7%A8%8B/">编程</a></p></div></article><article class="media"><figure class="media-left"><a class="image" href="/posts/4150128877.html"><img src="https://borisliu.gitbooks.io/from-python-to-django/content/introduction/using_python.jpg" alt="Python类和对象"></a></figure><div class="media-content"><p class="date"><time dateTime="2021-12-11T03:55:03.167Z">2021-12-11</time></p><p class="title"><a href="/posts/4150128877.html">Python类和对象</a></p><p class="categories"><a href="/categories/%E7%BC%96%E7%A8%8B/">编程</a></p></div></article><article class="media"><figure class="media-left"><a class="image" href="/posts/3150049846.html"><img src="https://img.php.cn/upload/article/000/000/024/5dd3bd77dcdcc543.jpg" alt="Vscode基础使用文档"></a></figure><div class="media-content"><p class="date"><time dateTime="2021-12-11T03:55:03.163Z">2021-12-11</time></p><p class="title"><a href="/posts/3150049846.html">Vscode基础使用文档</a></p><p class="categories"><a href="/categories/%E8%BD%AF%E4%BB%B6/">软件</a></p></div></article><article class="media"><figure class="media-left"><a class="image" href="/posts/4072117687.html"><img src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=46274188,117569977&amp;fm=26&amp;gp=0.jpg" alt="gcc编译和Cmake使用"></a></figure><div class="media-content"><p class="date"><time dateTime="2021-12-11T03:55:03.163Z">2021-12-11</time></p><p class="title"><a href="/posts/4072117687.html">gcc编译和Cmake使用</a></p><p class="categories"><a href="/categories/%E7%BC%96%E7%A8%8B/">编程</a></p></div></article><article class="media"><figure class="media-left"><a class="image" href="/posts/2489357851.html"><img src="https://superdevresources.com/wp-content/uploads/2015/01/GIT-logo_300x300.jpg" alt="Git版本控制精简版"></a></figure><div class="media-content"><p class="date"><time dateTime="2021-10-14T11:58:36.998Z">2021-10-14</time></p><p class="title"><a href="/posts/2489357851.html">Git版本控制精简版</a></p><p class="categories"><a href="/categories/%E8%BD%AF%E4%BB%B6/">软件</a></p></div></article></div></div><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#GCC编译器"><span class="level-left"><span class="level-item">1</span><span class="level-item">GCC编译器</span></span></a></li><li><a class="level is-mobile" href="#CMake-简要使用"><span class="level-left"><span class="level-item">2</span><span class="level-item">CMake 简要使用</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#编译流程"><span class="level-left"><span class="level-item">2.1</span><span class="level-item">编译流程</span></span></a></li><li><a class="level is-mobile" href="#两种构建方式"><span class="level-left"><span class="level-item">2.2</span><span class="level-item">两种构建方式</span></span></a></li><li><a class="level is-mobile" href="#CMake编写CMakeLists-txt"><span class="level-left"><span class="level-item">2.3</span><span class="level-item">CMake编写CMakeLists.txt</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#语法及注意事项"><span class="level-left"><span class="level-item">2.3.1</span><span class="level-item">语法及注意事项</span></span></a></li><li><a class="level is-mobile" href="#常用变量"><span class="level-left"><span class="level-item">2.3.2</span><span class="level-item">常用变量</span></span></a></li><li><a class="level is-mobile" href="#重要指令"><span class="level-left"><span class="level-item">2.3.3</span><span class="level-item">重要指令</span></span></a></li><li><a class="level is-mobile" href="#Vscode-调试-C-代码"><span class="level-left"><span class="level-item">2.3.4</span><span class="level-item">Vscode 调试 C++代码</span></span></a></li></ul></li></ul></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div><div class="column-right-shadow is-hidden-widescreen"></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img class="logo-img" src="/img/src/mylogo.png" alt="Bingeone博客园" height="28"><img class="logo-img-dark" src="/img/src/mylogo.png" alt="Bingeone博客园" height="28"></a><p class="is-size-7"><span>&copy; 2021 Bingeone</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a><br><span><span id="statistic-times">loading...</span><script>function createTime(time) {
+            var n = new Date(time);
+            now.setTime(now.getTime() + 250),
+                days = (now - n) / 1e3 / 60 / 60 / 24,
+                dnum = Math.floor(days),
+                hours = (now - n) / 1e3 / 60 / 60 - 24 * dnum,
+                hnum = Math.floor(hours),
+            1 == String(hnum).length && (hnum = "0" + hnum),
+                minutes = (now - n) / 1e3 / 60 - 1440 * dnum - 60 * hnum,
+                mnum = Math.floor(minutes),
+            1 == String(mnum).length && (mnum = "0" + mnum),
+                seconds = (now - n) / 1e3 - 86400 * dnum - 3600 * hnum - 60 * mnum,
+                snum = Math.round(seconds),
+            1 == String(snum).length && (snum = "0" + snum),
+                document.getElementById("statistic-times").innerHTML = "⭐本站自 <strong>"+time.split(" ")[0].replace(/\//g,".")+"</strong> 已坚守 <strong>" + dnum + "</strong> 天 <strong>" + hnum + "</strong> 小时 <strong>" + mnum + "</strong> 分 <strong>" + snum + "</strong> 秒！⭐";
+        }var now = new Date();setInterval("createTime('2021/08/01 00:00:00')", 250,"");</script></span><br><span><a href="http://www.baidu.com" target="_blank">琼ICP备000000号(测试)</a> - </span><span>⭐感谢 <strong><span id="busuanzi_value_site_uv">99+</span></strong> 小伙伴的 <strong><span id="busuanzi_value_site_pv">99+</span></strong> 次赏目！⭐</span></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Star me" href="https://github.com/Bingeone"><i class="iconfont icon-github"></i></a></p></div><div class="sideMusic"><link rel="stylesheet" href="/js/aplayer/APlayer.min.css"><script src="/js/aplayer/APlayer.min.js"></script><script src="/js/aplayer/Meting.min.js"></script><meting-js style="width: auto;height: 1000px;" server="netease" type="playlist" id="6861753000" theme="#2980b9" loop="all" autoplay="false" order="list" storageName="aplayer-setting" lrctype="0" list-max-height="200px" fixed="true"></meting-js></div></div></div></div></footer><script src="/js/jquery-3.4.1.min.js"></script><script src="https://cdnjs.loli.net/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script><script src="https://cdnjs.loli.net/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" defer></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><!--!--><script src="https://cdnjs.loli.net/ajax/libs/cookieconsent/3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: null,
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdnjs.loli.net/ajax/libs/lightgallery/1.6.8/js/lightgallery.min.js" defer></script><script src="https://cdnjs.loli.net/ajax/libs/justifiedGallery/3.7.0/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><script type="text/x-mathjax-config">MathJax.Hub.Config({
+             'HTML-CSS': {
+                 matchFontHeight: false
+             },
+             SVG: {
+                 matchFontHeight: false
+             },
+             CommonHTML: {
+                 matchFontHeight: false
+             },
+             tex2jax: {
+                 inlineMath: [
+                     ['$','$'],
+                     ['\\(','\\)']
+                 ]
+             }
+         });</script><script src="https://cdnjs.loli.net/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" defer></script><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script><script type="text/javascript" src="/js/night/universe.js"></script><script src="/js/click.js"></script><link rel="stylesheet" href="/js/aplayer/APlayer.min.css"><script type="text/javascript" src="/js/aplayer/APlayer.min.js"></script><script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=6119c76e49ea8f00167b1939&amp;product=sop" async="async"></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.js"></script><script type="text/javascript">var pjax = new Pjax({
+            elements: "a",//代表点击链接就更新
+            selectors: [  //代表要更新的节点
+                ".section",
+                "title"
+            ],
+            cache: true,
+            cacheBust:false
+        })
+            
+        function loadLunbo(){
+            $.getScript("/js/zouma/lunbo.js", function () {});
+            } 
+
+        // 开始 PJAX 执行的函数
+        document.addEventListener('pjax:send', function () {
+        });
+        
+        // PJAX 完成之后执行的函数，可以和上面的重载放在一起
+        document.addEventListener('pjax:complete', function () {
+            $(".section").css({opacity:1});
+
+            loadMainJs(jQuery, window.moment, window.ClipboardJS, window.IcarusThemeSettings);
+            loadBackTop();
+            loadLunbo();
+        });</script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"react":{"opacity":0.7},"log":false});</script></body></html>

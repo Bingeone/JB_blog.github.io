@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>CSS基础 - Bingeone博客园</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Bingeone博客园"><meta name="msapplication-TileImage" content="/img/src/logo.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Bingeone博客园"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="CSS基础 cursor: hand和cursor:pointer的区别   cursor:hand 与 cursor:pointer 的效果是一样的，都像光标指向链接一样，光标变成手行。cursor:hand ：IE完全支持。但是在firefox是不支持的，没有效果。cursor:pointer ：是CSS2.0的标准。所以firefox是支持的，但是IE5.0既之前版本不支持。IE6开始支持。"><meta property="og:type" content="blog"><meta property="og:title" content="CSS基础"><meta property="og:url" content="https://bingeone.top/posts/1503359168.html"><meta property="og:site_name" content="Bingeone博客园"><meta property="og:description" content="CSS基础 cursor: hand和cursor:pointer的区别   cursor:hand 与 cursor:pointer 的效果是一样的，都像光标指向链接一样，光标变成手行。cursor:hand ：IE完全支持。但是在firefox是不支持的，没有效果。cursor:pointer ：是CSS2.0的标准。所以firefox是支持的，但是IE5.0既之前版本不支持。IE6开始支持。"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://3wa.fr/wp-content/uploads/2020/04/logo-css.png"><meta property="article:published_time" content="2021-12-11T03:55:03.167Z"><meta property="article:modified_time" content="2021-12-11T04:31:49.665Z"><meta property="article:author" content="Bingeone"><meta property="article:tag" content="css"><meta property="twitter:card" content="summary"><meta property="twitter:image" content="https://3wa.fr/wp-content/uploads/2020/04/logo-css.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://bingeone.top/posts/1503359168.html"},"headline":"CSS基础","image":["https://3wa.fr/wp-content/uploads/2020/04/logo-css.png"],"datePublished":"2021-12-11T03:55:03.167Z","dateModified":"2021-12-11T04:31:49.665Z","author":{"@type":"Person","name":"Bingeone"},"publisher":{"@type":"Organization","name":"Bingeone博客园","logo":{"@type":"ImageObject","url":{"light":"/img/src/mylogo.png","dark":"/img/src/mylogo.png"}}},"description":"CSS基础 cursor: hand和cursor:pointer的区别   cursor:hand 与 cursor:pointer 的效果是一样的，都像光标指向链接一样，光标变成手行。cursor:hand ：IE完全支持。但是在firefox是不支持的，没有效果。cursor:pointer ：是CSS2.0的标准。所以firefox是支持的，但是IE5.0既之前版本不支持。IE6开始支持。"}</script><link rel="canonical" href="https://bingeone.top/posts/1503359168.html"><link rel="icon" href="/img/src/logo.png"><link rel="stylesheet" href="/css/font/fontawesome/css2/all.min.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css"><link rel="stylesheet" href="/css/font/font.css"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/cookieconsent/3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/justifiedGallery/3.7.0/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><script src="https://cdnjs.loli.net/ajax/libs/pace/1.0.2/pace.min.js"></script><!--!--><!--!--><script src="https://zz.bdstatic.com/linksubmit/push.js" defer></script><meta name="generator" content="Hexo 5.4.0"></head><body class="is-3-column"><script type="text/javascript" src="/js/night/night.js"></script><canvas id="universe"></canvas><nav class="navbar navbar-main is-sticky"><div class="container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img class="logo-img" src="/img/src/mylogo.png" alt="Bingeone博客园" height="28"><img class="logo-img-dark" src="/img/src/mylogo.png" alt="Bingeone博客园" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">首页</a><a class="navbar-item" href="/archives">归档</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a><a class="navbar-item" href="/bookmark">书签</a><a class="navbar-item" href="/talking">说说</a><a class="navbar-item" href="/friends">友链</a><a class="navbar-item" href="/about">关于</a></div><div class="navbar-end"><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item night" id="night-nav" title="Night Mode" href="javascript:;"><i class="fas fa-moon" id="night-icon" style="color:#d4237a"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><link rel="stylesheet" href="/css/iconfont.css"><i class="iconfont icon-sousuo3"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-8-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><time dateTime="2021-12-11T03:55:03.167Z" title="2021/12/11 上午11:55:03">2021-12-11</time>发表</span><span class="level-item"><time dateTime="2021-12-11T04:31:49.665Z" title="2021/12/11 下午12:31:49">2021-12-11</time>更新</span><span class="level-item" id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv">0</span>次访问</span><script type="text/javascript" src="/js/busuanzi.mini.js"></script></div></div><h1 class="title is-3 is-size-4-mobile">CSS基础</h1><div class="content"><h3 id="CSS基础"><a href="#CSS基础" class="headerlink" title="CSS基础"></a>CSS基础</h3><ul>
+<li>cursor: hand和cursor:pointer的区别</li>
+</ul>
+<blockquote>
+<p>cursor:hand 与 cursor:pointer 的效果是一样的，都像光标指向链接一样，光标变成手行。cursor:hand ：IE完全支持。但是在firefox是不支持的，没有效果。<br>cursor:pointer ：是CSS2.0的标准。所以firefox是支持的，但是IE5.0既之前版本不支持。IE6开始支持。 </p>
+</blockquote>
+<ul>
+<li>background-size: length/percentage/cover/contain  属性规定背景图像的尺寸</li>
+</ul>
+<blockquote>
+<p>background-size：100%;总是X轴100%铺满整个容器，Y轴可能被裁剪会出现空白填不满部分，图片不变形。<br>background-size：100% 100%;图片不保持比例放大或缩小使X轴与Y轴都铺满整个容器，图片可能会变形。<br>background-size：cover;图片保持比例放大或缩小使X轴与Y轴都铺满整个容器，但图片超出容器部分会被裁剪掉，图片不变形。<br>background-size：contain;图片保持比例放大或缩小填充容器，若不能完整填充容器，X轴或Y轴都有可能出现白边，图片不变形。</p>
+</blockquote>
+<ul>
+<li>perspective 属性定义 3D 元素距视图的距离,以像素计</li>
+</ul>
+<span id="more"></span>
+
+<h4 id="文本设置"><a href="#文本设置" class="headerlink" title="文本设置"></a>文本设置</h4><ul>
+<li>font-ice：字号参数</li>
+<li>font-style：字体格式</li>
+<li>font-weight：字体粗细</li>
+<li>颜色属性color</li>
+</ul>
+<h4 id="超链接设置"><a href="#超链接设置" class="headerlink" title="超链接设置"></a>超链接设置</h4><ul>
+<li>text_decoration：作用改变浏览器显示文字链接时的下划线（参数）<ul>
+<li>underline：为文字加下画线</li>
+<li>overline：为文字加上画线</li>
+<li>line-through：为文字加删除线</li>
+<li>blink：是文字闪烁</li>
+<li>none：不显示任何效果</li>
+</ul>
+</li>
+</ul>
+<h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h4><ul>
+<li>background color：参数</li>
+<li>background image：url（背景图片存放路径）</li>
+<li>background repeat：参数（图片重复）<ul>
+<li>now repeat：不重复平铺背景图片</li>
+<li>repeat-x: 使图片只在水平方向上平铺</li>
+<li>repeat-y: 使图片只在垂直方向上平铺</li>
+</ul>
+</li>
+<li>background-attachment：参数（图片固定）<ul>
+<li>filed：网页滚动，图片相对窗口固定不动</li>
+<li>scroll：网页滚动，图片随窗口滚动</li>
+</ul>
+</li>
+</ul>
+<h4 id="区块"><a href="#区块" class="headerlink" title="区块"></a>区块</h4><ul>
+<li>word-spacing: 单词间距</li>
+<li>letter-spacing：字母间距</li>
+<li>text-align：参数（文本对齐）<ul>
+<li>left：左对齐</li>
+<li>right：右对齐</li>
+<li>center：居中对齐</li>
+<li>justify：相对左右对齐</li>
+</ul>
+</li>
+<li>vertical-align：参数（垂直对齐）<ul>
+<li>top：顶对齐</li>
+<li>bottom：底对齐</li>
+<li>text-top：相对文本顶对齐</li>
+<li>text-bottom：相对文本底对齐</li>
+<li>baseline：基准线对齐</li>
+<li>middle：中心对齐</li>
+<li>sub：以下标的形式显示</li>
+<li>super：以上标的形式显示</li>
+</ul>
+</li>
+<li>text-indent：文本缩进（12px相当一个文字距离）</li>
+<li>white-space：参数（空格）<ul>
+<li>normal：正常</li>
+<li>pre：保留</li>
+<li>nowrap：不换行</li>
+</ul>
+</li>
+<li>display：参数（显示样式）<ul>
+<li>block：块级元素，在对象前后都换行</li>
+<li>inline：在对象前后都不换行</li>
+<li>list-item：在对象前后都换行，增加项目符号</li>
+<li>none：无显示</li>
+</ul>
+</li>
+</ul>
+<h4 id="方框"><a href="#方框" class="headerlink" title="方框"></a>方框</h4><ul>
+<li>height：高度</li>
+<li>width：kuandu</li>
+<li>padding：内边距</li>
+<li>margin：外边距</li>
+<li>float：浮动（可以让块级元素在一行中排列）</li>
+<li>clear：清除浮动</li>
+</ul>
+<h4 id="边框"><a href="#边框" class="headerlink" title="边框"></a>边框</h4><ul>
+<li>border style：参数（边框样式）<ul>
+<li>none：无边框</li>
+<li>dotted：边框为点样式</li>
+<li>dashed：边框为长短线</li>
+<li>solid：边框为实线</li>
+<li>double：边框为双线</li>
+</ul>
+</li>
+<li>border width：宽度</li>
+<li>border color：颜色</li>
+</ul>
+<h4 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h4><ul>
+<li>list-style-type：列表样式（不同浏览器的列表符不同，显示会出错，一般以图片显示）</li>
+</ul>
+<h4 id="鼠标"><a href="#鼠标" class="headerlink" title="鼠标"></a>鼠标</h4><ul>
+<li>cursor：鼠标形状参数<ul>
+<li>style=“cursor：hand” 手形</li>
+<li>style=“cursor：help” 问号形</li>
+</ul>
+</li>
+</ul>
+<h3 id="CSS好用工具"><a href="#CSS好用工具" class="headerlink" title="CSS好用工具"></a>CSS好用工具</h3><ul>
+<li><strong>动效</strong></li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://animate.style/">animate.style—动画</a>     <a target="_blank" rel="noopener" href="http://michalsnik.github.io/aos/">动效进场</a>     <a target="_blank" rel="noopener" href="https://cubic-bezier.com/">cubic-bezier—响应时间曲线</a></p>
+<ul>
+<li>背景形状</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://css-tricks.com/the-shapes-of-css/">css-tricks—形状</a></p>
+<ul>
+<li>背景颜色</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://cssgradient.io/">cssgradient—颜色</a></p>
+<ul>
+<li>CSS和html格式校对</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="http://jigsaw.w3.org/css-validator/#validate_by_upload">css-validator</a></p>
+<ul>
+<li>html中特殊符号</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://dev.w3.org/html5/html-author/charref">charref</a></p>
+<ul>
+<li>图片尺寸修改生成器</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://www.responsivebreakpoints.com/">Image Breakpoints Generator </a>     <a target="_blank" rel="noopener" href="https://cloudconvert.com/jpeg-to-webp">webp网页图片修改</a></p>
+<ul>
+<li>矢量图标</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://icons.getbootstrap.com/">Bootstrap图标</a>    <a target="_blank" rel="noopener" href="https://www.iconfont.cn/home/index?spm=a313x.7781069.1998910419.3">阿里矢量图标</a></p>
+<h3 id="第三方工具"><a href="#第三方工具" class="headerlink" title="第三方工具"></a>第三方工具</h3><ul>
+<li>表单</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://formspree.io/">Fromspree</a>    <a target="_blank" rel="noopener" href="https://getbootstrap.com/">Bootstrap</a>    <a target="_blank" rel="noopener" href="https://ogp.me/">开放图谱协议</a></p>
+</div><hr><div class="article-licensing box"><div class="licensing-title"><p>CSS基础</p><p><a href="https://bingeone.top/posts/1503359168.html">https://bingeone.top/posts/1503359168.html</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>Bingeone</p></div></div><div class="level-item is-narrow"><div><h6>发布</h6><p>2021-12-11</p></div></div><div class="level-item is-narrow"><div><h6>更新</h6><p>2021-12-11</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><link rel="stylesheet" href="/css/iconfont.css"><div class="sharethis-inline-share-buttons"></div><script src="https://platform-api.sharethis.com/js/sharethis.js#property=6119c76e49ea8f00167b1939&amp;product=sop" defer></script></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/posts/4150128877.html"><span class="level-item">Python类和对象</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><div class="card"><div class="card-content"><h3 class="title is-5">评论</h3><script src="https://utteranc.es/client.js" repo="Bingeone/blog_comment" issue-term="pathname" label="some-issue-label" theme="boxy-light" crossorigin="anonymous" async></script></div></div></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1"><div class="card widget" data-type="recent-posts"><div class="card-content"><h3 class="menu-label">最新文章</h3><article class="media"><figure class="media-left"><a class="image" href="/posts/1503359168.html"><img src="https://3wa.fr/wp-content/uploads/2020/04/logo-css.png" alt="CSS基础"></a></figure><div class="media-content"><p class="date"><time dateTime="2021-12-11T03:55:03.167Z">2021-12-11</time></p><p class="title"><a href="/posts/1503359168.html">CSS基础</a></p><p class="categories"><a href="/categories/%E7%BC%96%E7%A8%8B/">编程</a></p></div></article><article class="media"><figure class="media-left"><a class="image" href="/posts/4150128877.html"><img src="https://borisliu.gitbooks.io/from-python-to-django/content/introduction/using_python.jpg" alt="Python类和对象"></a></figure><div class="media-content"><p class="date"><time dateTime="2021-12-11T03:55:03.167Z">2021-12-11</time></p><p class="title"><a href="/posts/4150128877.html">Python类和对象</a></p><p class="categories"><a href="/categories/%E7%BC%96%E7%A8%8B/">编程</a></p></div></article><article class="media"><figure class="media-left"><a class="image" href="/posts/3150049846.html"><img src="https://img.php.cn/upload/article/000/000/024/5dd3bd77dcdcc543.jpg" alt="Vscode基础使用文档"></a></figure><div class="media-content"><p class="date"><time dateTime="2021-12-11T03:55:03.163Z">2021-12-11</time></p><p class="title"><a href="/posts/3150049846.html">Vscode基础使用文档</a></p><p class="categories"><a href="/categories/%E8%BD%AF%E4%BB%B6/">软件</a></p></div></article><article class="media"><figure class="media-left"><a class="image" href="/posts/4072117687.html"><img src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=46274188,117569977&amp;fm=26&amp;gp=0.jpg" alt="gcc编译和Cmake使用"></a></figure><div class="media-content"><p class="date"><time dateTime="2021-12-11T03:55:03.163Z">2021-12-11</time></p><p class="title"><a href="/posts/4072117687.html">gcc编译和Cmake使用</a></p><p class="categories"><a href="/categories/%E7%BC%96%E7%A8%8B/">编程</a></p></div></article><article class="media"><figure class="media-left"><a class="image" href="/posts/2489357851.html"><img src="https://superdevresources.com/wp-content/uploads/2015/01/GIT-logo_300x300.jpg" alt="Git版本控制精简版"></a></figure><div class="media-content"><p class="date"><time dateTime="2021-10-14T11:58:36.998Z">2021-10-14</time></p><p class="title"><a href="/posts/2489357851.html">Git版本控制精简版</a></p><p class="categories"><a href="/categories/%E8%BD%AF%E4%BB%B6/">软件</a></p></div></article></div></div><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#CSS基础"><span class="level-left"><span class="level-item">1</span><span class="level-item">CSS基础</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#文本设置"><span class="level-left"><span class="level-item">1.1</span><span class="level-item">文本设置</span></span></a></li><li><a class="level is-mobile" href="#超链接设置"><span class="level-left"><span class="level-item">1.2</span><span class="level-item">超链接设置</span></span></a></li><li><a class="level is-mobile" href="#背景"><span class="level-left"><span class="level-item">1.3</span><span class="level-item">背景</span></span></a></li><li><a class="level is-mobile" href="#区块"><span class="level-left"><span class="level-item">1.4</span><span class="level-item">区块</span></span></a></li><li><a class="level is-mobile" href="#方框"><span class="level-left"><span class="level-item">1.5</span><span class="level-item">方框</span></span></a></li><li><a class="level is-mobile" href="#边框"><span class="level-left"><span class="level-item">1.6</span><span class="level-item">边框</span></span></a></li><li><a class="level is-mobile" href="#列表"><span class="level-left"><span class="level-item">1.7</span><span class="level-item">列表</span></span></a></li><li><a class="level is-mobile" href="#鼠标"><span class="level-left"><span class="level-item">1.8</span><span class="level-item">鼠标</span></span></a></li></ul></li><li><a class="level is-mobile" href="#CSS好用工具"><span class="level-left"><span class="level-item">2</span><span class="level-item">CSS好用工具</span></span></a></li><li><a class="level is-mobile" href="#第三方工具"><span class="level-left"><span class="level-item">3</span><span class="level-item">第三方工具</span></span></a></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div><div class="column-right-shadow is-hidden-widescreen"></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img class="logo-img" src="/img/src/mylogo.png" alt="Bingeone博客园" height="28"><img class="logo-img-dark" src="/img/src/mylogo.png" alt="Bingeone博客园" height="28"></a><p class="is-size-7"><span>&copy; 2021 Bingeone</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a><br><span><span id="statistic-times">loading...</span><script>function createTime(time) {
+            var n = new Date(time);
+            now.setTime(now.getTime() + 250),
+                days = (now - n) / 1e3 / 60 / 60 / 24,
+                dnum = Math.floor(days),
+                hours = (now - n) / 1e3 / 60 / 60 - 24 * dnum,
+                hnum = Math.floor(hours),
+            1 == String(hnum).length && (hnum = "0" + hnum),
+                minutes = (now - n) / 1e3 / 60 - 1440 * dnum - 60 * hnum,
+                mnum = Math.floor(minutes),
+            1 == String(mnum).length && (mnum = "0" + mnum),
+                seconds = (now - n) / 1e3 - 86400 * dnum - 3600 * hnum - 60 * mnum,
+                snum = Math.round(seconds),
+            1 == String(snum).length && (snum = "0" + snum),
+                document.getElementById("statistic-times").innerHTML = "⭐本站自 <strong>"+time.split(" ")[0].replace(/\//g,".")+"</strong> 已坚守 <strong>" + dnum + "</strong> 天 <strong>" + hnum + "</strong> 小时 <strong>" + mnum + "</strong> 分 <strong>" + snum + "</strong> 秒！⭐";
+        }var now = new Date();setInterval("createTime('2021/08/01 00:00:00')", 250,"");</script></span><br><span><a href="http://www.baidu.com" target="_blank">琼ICP备000000号(测试)</a> - </span><span>⭐感谢 <strong><span id="busuanzi_value_site_uv">99+</span></strong> 小伙伴的 <strong><span id="busuanzi_value_site_pv">99+</span></strong> 次赏目！⭐</span></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Star me" href="https://github.com/Bingeone"><i class="iconfont icon-github"></i></a></p></div><div class="sideMusic"><link rel="stylesheet" href="/js/aplayer/APlayer.min.css"><script src="/js/aplayer/APlayer.min.js"></script><script src="/js/aplayer/Meting.min.js"></script><meting-js style="width: auto;height: 1000px;" server="netease" type="playlist" id="6861753000" theme="#2980b9" loop="all" autoplay="false" order="list" storageName="aplayer-setting" lrctype="0" list-max-height="200px" fixed="true"></meting-js></div></div></div></div></footer><script src="/js/jquery-3.4.1.min.js"></script><script src="https://cdnjs.loli.net/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script><script src="https://cdnjs.loli.net/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" defer></script><script>moment.locale("zh-CN");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><!--!--><script src="https://cdnjs.loli.net/ajax/libs/cookieconsent/3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: null,
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdnjs.loli.net/ajax/libs/lightgallery/1.6.8/js/lightgallery.min.js" defer></script><script src="https://cdnjs.loli.net/ajax/libs/justifiedGallery/3.7.0/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><script type="text/x-mathjax-config">MathJax.Hub.Config({
+             'HTML-CSS': {
+                 matchFontHeight: false
+             },
+             SVG: {
+                 matchFontHeight: false
+             },
+             CommonHTML: {
+                 matchFontHeight: false
+             },
+             tex2jax: {
+                 inlineMath: [
+                     ['$','$'],
+                     ['\\(','\\)']
+                 ]
+             }
+         });</script><script src="https://cdnjs.loli.net/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML" defer></script><!--!--><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script><script type="text/javascript" src="/js/night/universe.js"></script><script src="/js/click.js"></script><link rel="stylesheet" href="/js/aplayer/APlayer.min.css"><script type="text/javascript" src="/js/aplayer/APlayer.min.js"></script><script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=6119c76e49ea8f00167b1939&amp;product=sop" async="async"></script><script src="https://cdn.jsdelivr.net/npm/pjax@0.2.8/pjax.js"></script><script type="text/javascript">var pjax = new Pjax({
+            elements: "a",//代表点击链接就更新
+            selectors: [  //代表要更新的节点
+                ".section",
+                "title"
+            ],
+            cache: true,
+            cacheBust:false
+        })
+            
+        function loadLunbo(){
+            $.getScript("/js/zouma/lunbo.js", function () {});
+            } 
+
+        // 开始 PJAX 执行的函数
+        document.addEventListener('pjax:send', function () {
+        });
+        
+        // PJAX 完成之后执行的函数，可以和上面的重载放在一起
+        document.addEventListener('pjax:complete', function () {
+            $(".section").css({opacity:1});
+
+            loadMainJs(jQuery, window.moment, window.ClipboardJS, window.IcarusThemeSettings);
+            loadBackTop();
+            loadLunbo();
+        });</script><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"react":{"opacity":0.7},"log":false});</script></body></html>
